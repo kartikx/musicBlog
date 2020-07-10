@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container-box mt-4">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <legend class="border-bottom mb-4">Sign Up</legend>
+
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {% if field.errors %}
+                        {% render_field field class="form-control is-invalid" %}
+                        {% for error in field.errors %}
+                            <span class="invalid-feedback">
+                                {{error}}
+                            </span>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field field class="form-control is-valid" %}
+                    {% endif %}
+                    {% if field.help_text and request.method == 'GET' %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <input type="submit" class="btn btn-outline-info mt-2" value="Register">
+        </form>
+    </div>
+{% endblock %}
