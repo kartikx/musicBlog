@@ -21,11 +21,14 @@ class RegistrationForm(forms.Form):
         
         return username_entered
 
-    def clean_confirm_password(self):
-        password1 = self.cleaned_data['password']
-        password2 = self.cleaned_data['confirm_password']
+    def clean(self):
+        cleaned_data = super(RegistrationForm, self).clean()
+        password1 = cleaned_data.get("password")
+        password2 = cleaned_data.get("confirm_password")
 
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("The passwords don't match", code='invalid')
+        if password1 != password2 :
+            self.add_error('password', forms.ValidationError(""))
+            self.add_error('confirm_password', forms.ValidationError("Passwords don't match"))
+        
+        return cleaned_data
 
-        return password1
