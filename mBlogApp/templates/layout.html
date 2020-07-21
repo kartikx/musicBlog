@@ -39,6 +39,18 @@
             <!-- Code for side-dropdown bar when Logged in -->
 
         <div class="container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+                        {{message}}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span>
+                                &times;
+                            </span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
             {% block content%} 
             {% endblock content %}
         </div>
