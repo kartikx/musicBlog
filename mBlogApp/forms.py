@@ -1,12 +1,12 @@
 from django import forms
-from django.core.validators import MaxLengthValidator
 from django.contrib.auth.models import User
 
 class RegistrationForm(forms.Form):
-    username = forms.CharField(label= 'Username', label_suffix= '', max_length= 20)
-    password = forms.CharField(label= 'Password', label_suffix= '', widget= forms.PasswordInput, 
-                               help_text= "Please don't use an important password.", required= False)
-    confirm_password = forms.CharField(label= 'Confirm Password', label_suffix= '', widget= forms.PasswordInput)
+    username = forms.CharField(label_suffix= '', max_length= 20)
+    password = forms.CharField(label_suffix= '', widget= forms.PasswordInput, 
+                               help_text= "Please don't use an important password.")
+    confirm_password = forms.CharField(label_suffix= '', widget= forms.PasswordInput)
+
 
     """
     These are called, once it has been affirmed that
