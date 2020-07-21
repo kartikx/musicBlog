@@ -34,3 +34,14 @@ class RegistrationForm(forms.Form):
         
         return cleaned_data
 
+class LoginForm(forms.Form):
+    username = forms.CharField(label_suffix= '', max_length= 20)
+    password = forms.CharField(label_suffix= '', widget= forms.PasswordInput)
+
+    def clean_username(self):
+        username_entered = self.cleaned_data['username']
+        user = User.objects.filter(username= username_entered).first()
+        if not user:
+            raise forms.ValidationError('An account with that username does not exist, Sign up?', code='invalid')
+        return username_entered
+
