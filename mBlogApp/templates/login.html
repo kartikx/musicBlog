@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container-box mt-4">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <legend class="border-bottom mb-4">Login</legend>
+
+            {% include 'includes/form.html' with form=form %}   
+            <button type="submit" class="btn btn-outline-primary mt-2"> Login </button>
+            <div class = "text-muted mt-4 pt-2 border-top">
+                Don't have an account? <a href="{% url 'register' %}">Sign Up!</a>
+            </span>
+        </form>
+    </div>
+{% endblock %}
