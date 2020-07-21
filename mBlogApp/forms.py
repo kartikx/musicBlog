@@ -9,8 +9,10 @@ class RegistrationForm(forms.Form):
 
 
     """
-    These are called, once it has been affirmed that
-    input has been given.
+    clean_username is called when clean has already
+    been called once on the username field. It has
+    already applied the validators you specified, and 
+    stored the data in the dictionary.
     """
     def clean_username(self):
         username_entered = self.cleaned_data['username']
