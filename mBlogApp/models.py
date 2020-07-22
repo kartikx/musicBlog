@@ -12,3 +12,7 @@ class Post(models.Model):
 
     def __str__(self):
         return f'[{self.title}, {self.artist}]'
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete= models.CASCADE)
+    profile_photo = models.ImageField(default='default.jpg', upload_to = 'profile_photos')
