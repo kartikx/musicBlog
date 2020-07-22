@@ -15,7 +15,8 @@ def register(request):
         if form.is_valid():
             User.objects.create_user(username= form.cleaned_data['username'],
                                      password= form.cleaned_data['password'])
-            return redirect('welcome')
+            messages.add_message(request, messages.SUCCESS, "You may now log in")
+            return redirect('login')
     else :
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form, 'show_valid': True})    
