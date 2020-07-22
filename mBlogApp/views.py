@@ -30,8 +30,9 @@ def login(request):
             user = authenticate(request, username= username, password= password)
 
             if user is not None:
+                auth_login(request, user)
                 messages.add_message(request, messages.SUCCESS, "Welcome back!")
-                return redirect('welcome')
+                return redirect('feed')
             else:
                 messages.add_message(request, messages.ERROR, "Invalid Credentials")
     else:
