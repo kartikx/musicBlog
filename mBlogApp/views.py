@@ -38,3 +38,18 @@ def login(request):
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form, 'show_valid': False})
+
+def feed(request):
+    posts = Post.objects.all().order_by('-date_posted')
+
+    # read up on what exactly request.POST is
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST)
+        if form.is_valid():
+            song =  form.cleaned_data['song']
+            artist = form.cleaned_data['artist']
+            content = form.cleaned_data['content']
+            song = Post(title= song, artist = artist, content= content, author= User.objects.get(username= request.user.username))
+            song.save()
+    form = CreatePostForm()
+    return render(request, 'feed.html', {'posts': posts, 'form': form})
