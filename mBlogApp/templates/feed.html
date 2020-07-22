@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+<!-- is this needed? -->
+{% load static %}
+{% block content %}
+    <div class="feed">
+    <!-- {% if current_user.is_authenticated %} -->
+    <!-- {% endif %} -->
+   {% for post in posts %}
+    <div class="feed-post">
+        <!-- <div class="post-profile-image">
+            <img src="{% static post.author.userprofile.profile_photo.url %}"
+             class="rounded-circle" height= 35px>
+        </div> -->
+        
+        <div class="post-title">
+            <h2>{{post.title}} - {{post.artist}}</h2>
+        </div>
+        
+        <div class="post-album-art">
+        </div>
+        
+        <div class="post-content">
+            {{post.content}}
+        </div>
+        <div class="post-footer">
+            Posted on {{post.date_posted}} by -<a href = "#">{{post.author}}</a>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <div class="container-box">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <legend class="border-bottom">Create Post</legend>  
+            {{form}}
+            <button type="submit">Post</button>
+        </form>
+    </div> 
+    </div>
+{% endblock %}
