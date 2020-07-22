@@ -45,3 +45,7 @@ class LoginForm(forms.Form):
             raise forms.ValidationError('An account with that username does not exist, Sign up?', code='invalid')
         return username_entered
 
+class CreatePostForm(forms.Form):
+    song = forms.CharField(label= 'Song Title', label_suffix= '', max_length=50)
+    artist = forms.CharField(label= 'Artist Name', label_suffix= '', max_length=50)
+    content = forms.CharField(label='Content', label_suffix= '', widget= forms.TextInput)
