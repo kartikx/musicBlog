@@ -1,0 +1,46 @@
+.feed {
+    width: 40vw;
+    margin: 0 auto;
+}
+
+
+.feed-post {
+    background-color: white;
+    font-size: 1rem;
+    margin: 1em 0em;
+    padding: 1em;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template: "album-art album-art title title" min-content
+    "album-art album-art post-content post-content" 10em
+    ". . . footer" 1em
+    / 1fr 1fr 2fr 4fr;
+
+    gap: 0 1.5em;
+}
+
+.post-profile-image{
+    grid-area: profile-img;
+}
+
+.post-title {
+    grid-area: title;
+}
+
+.post-album-art{
+    grid-area: album-art;
+    background-image: url('../Resources/timhenson.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.post-content {
+    grid-area: post-content;
+}
+
+.post-footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: flex-end;
+}

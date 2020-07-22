@@ -1,0 +1,23 @@
+@import 'feed', 'welcome', 'navbar';
+
+* {
+    font-family: "Nunito";
+}
+
+body {
+    background-image: url("../Resources/main-bg.jpg");
+    background-attachment: fixed;
+}
+
+.container-box {
+    padding: 15px;
+    border-width: 5px solid black;
+    border-radius: 10px;
+    background: white;
+}
+
+.container {
+    margin: 0 auto;
+    width: 20vw;
+    border: 2px solid red;
+}

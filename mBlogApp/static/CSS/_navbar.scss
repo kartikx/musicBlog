@@ -1,0 +1,19 @@
+.dropdown {
+    padding-right: 0;
+    margin-left: auto;
+    align-self: flex-end;
+    /* padding-top: 2em; */
+}
+
+.dropdown-icon {
+    height: 25px;
+    width: 25px;
+    background-image: url("../Resources/caret-down.svg");
+    background-size: contain;
+    color: black;
+}
+
+.dropdown-icon:hover {
+    background-image: url("../Resources/caret-down-solid.svg");
+    background-size: contain;
+}
