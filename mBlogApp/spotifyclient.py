@@ -1,6 +1,7 @@
 import requests
 import base64
 import datetime
+import random
 from urllib.parse import urlencode
 
 """
@@ -72,16 +73,28 @@ class SpotifyClient:
         lookup_url = f"{endpoint}?{data}"
         r = requests.get(lookup_url, headers = headers)
 
+        if r.status_code not in range(200, 299):
+            return {}
+
         return r.json()
     
     def get_first_track_result(self, song_name, artist_name):
         search_result_json = self.get_track(song_name, artist_name, 'track')
+
+        if not search_result_json:
+            return {}
+
         first_track_result = search_result_json['tracks']['items'][0]
 
         return first_track_result
 
     def get_first_track_album_image_url(self, song_name, artist_name):
         first_track_result = self.get_first_track_result(song_name, artist_name)
+
+        # If nothing found return a default Album Image.
+        if not first_track_result:
+            return 'https://i.scdn.co/image/ab67616d0000b2737a799cc62e624fd6432779e3'
+
         album_image_url = first_track_result['album']['images'][0]['url']
         return album_image_url
 
