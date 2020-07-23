@@ -12,16 +12,12 @@
     border-radius: 10px;
 
     display: grid;
-    grid-template: "album-art album-art title title" min-content
-    "album-art album-art post-content post-content" 10em
-    ". . . footer" 1em
-    / 1fr 1fr 2fr 4fr;
+    grid-template: "album-art title title" min-content
+    "album-art post-content post-content" 10em
+    ". . footer" 1em
+    / 3fr 2fr 5fr;
 
     gap: 0 1.5em;
-}
-
-.post-profile-image{
-    grid-area: profile-img;
 }
 
 .post-title {
