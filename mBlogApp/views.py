@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 from .forms import RegistrationForm, LoginForm, CreatePostForm
-from .models import Post
+from .models import Post, Genre
 from .apps import MblogappConfig
 from .utils import *
 
@@ -51,12 +51,21 @@ def feed(request):
             song     =  form.cleaned_data['song']
             artist   = form.cleaned_data['artist']
             content  = form.cleaned_data['content']
-            client = MblogappConfig.client
+            client   = MblogappConfig.client
             filename = download_image(client.get_first_track_album_image_url(song, artist))
-            
+            genres   = client.get_genre_for_track(song, artist)
+            spotifylink = client.get_spotify_link(song, artist)
             post     = Post(title= song, artist = artist, content= content,
                             author= User.objects.get(username= request.user.username),
-                            albumart= filename)
+                            albumart= filename, spotifylink= spotifylink)
+            post.save()
+            
+            for genre in genres:
+                genre_instance = Genre.objects.filter(name= genre).first()
+                if genre_instance is None :
+                    post.genres.create(name= genre)
+                else :
+                    post.genres.add(genre_instance)
             post.save()
 
     form = CreatePostForm()
