@@ -44,8 +44,30 @@
     grid-area: post-content;
 }
 
-.post-footer {
-    grid-area: footer;
-    display: flex;
-    justify-content: flex-end;
+.post-tags {
+    grid-area: tags;
+
+    .tag-link {
+        text-decoration: none;
+        text-transform: lowercase;
+        border-radius: 1.5em;
+        border: 1px solid #00b38b;
+        padding: 0.25em 0.5em;
+        margin-right: 0.25em;
+        font-size: 1rem;
+        color: #0d5848;
+        transition: all ease-in-out 250ms;
+
+        &:hover{
+            background-color: #00b38b;
+            color: white;
+            font-size: 1.02rem;
+        }
+        // .tag-link-one {
+        //     color: #00b38b;
+        // }
+
+        // .tag-link-two {
+        // }
+    }
 }
