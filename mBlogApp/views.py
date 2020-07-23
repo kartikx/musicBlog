@@ -51,7 +51,9 @@ def feed(request):
             song     =  form.cleaned_data['song']
             artist   = form.cleaned_data['artist']
             content  = form.cleaned_data['content']
-            filename = download_image(song, artist)
+            client = MblogappConfig.client
+            filename = download_image(client.get_first_track_album_image_url(song, artist))
+            
             post     = Post(title= song, artist = artist, content= content,
                             author= User.objects.get(username= request.user.username),
                             albumart= filename)
