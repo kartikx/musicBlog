@@ -7,10 +7,15 @@
     <!-- {% endif %} -->
    {% for post in posts %}
     <div class="feed-post">
-        <!-- <div class="post-profile-image">
+        <div class="post-profile-photo">
+            <a href="#">
             <img src="{% static post.author.userprofile.profile_photo.url %}"
              class="rounded-circle" height= 35px>
-        </div> -->
+             <span class="post-username-tooltip">
+                 {{post.author.username}}
+             </span>
+            </a>
+        </div>
         
         <div class="post-title">
             <h2>{{post.title}} - {{post.artist}}</h2>
