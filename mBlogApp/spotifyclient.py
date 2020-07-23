@@ -55,3 +55,22 @@ class SpotifyClient:
         return self.access_token
 
     def get_track(self, song_name, artist_name, search_type= 'track'):
+        access_token = self.get_access_token()
+        if access_token is None:
+            raise Exception("Unable to receive access token")
+
+        endpoint = "https://api.spotify.com/v1/search"
+        headers = {
+            'Authorization': f'Bearer {access_token}'
+        }
+        query_string = song_name + ' ' + artist_name
+        data = urlencode({
+            'q' : query_string,
+            'type' : search_type
+        })
+
+        lookup_url = f"{endpoint}?{data}"
+        r = requests.get(lookup_url, headers = headers)
+
+        return r.json()
+    
