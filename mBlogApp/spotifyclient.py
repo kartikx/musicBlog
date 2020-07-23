@@ -98,3 +98,15 @@ class SpotifyClient:
         album_image_url = first_track_result['album']['images'][0]['url']
         return album_image_url
 
+    def get_spotify_link(self, song_name, artist_name):
+        first_track_result = self.get_first_track_result(song_name, artist_name)
+
+        # If nothing found return empty url.
+        if not first_track_result:
+            return ''
+
+        spotify_link = first_track_result['external_urls']['spotify']
+
+        return spotify_link
+
+    def get_genre_for_track(self, song_name, artist_name):
