@@ -2,12 +2,13 @@
     padding-right: 0;
     margin-left: auto;
     align-self: flex-end;
-    /* padding-top: 2em; */
+    transform: translateY(-15%);
 }
 
 .dropdown-icon {
     height: 25px;
     width: 25px;
+    align-items: center;
     background-image: url("../Resources/caret-down.svg");
     background-size: contain;
     color: black;
