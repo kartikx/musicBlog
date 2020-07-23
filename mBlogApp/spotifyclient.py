@@ -74,3 +74,14 @@ class SpotifyClient:
 
         return r.json()
     
+    def get_first_track_result(self, song_name, artist_name):
+        search_result_json = self.get_track(song_name, artist_name, 'track')
+        first_track_result = search_result_json['tracks']['items'][0]
+
+        return first_track_result
+
+    def get_first_track_album_image_url(self, song_name, artist_name):
+        first_track_result = self.get_first_track_result(song_name, artist_name)
+        album_image_url = first_track_result['album']['images'][0]['url']
+        return album_image_url
+
