@@ -11,13 +11,29 @@
   border-radius: 10px;
   display: -ms-grid;
   display: grid;
-  grid-template: "album-art album-art title title" -webkit-min-content "album-art album-art post-content post-content" 10em ". . . footer" 1em / 1fr 1fr 2fr 4fr;
-  grid-template: "album-art album-art title title" min-content "album-art album-art post-content post-content" 10em ". . . footer" 1em / 1fr 1fr 2fr 4fr;
-  gap: 0 1.5em;
+  grid-template: "album-art title profile-photo" -webkit-min-content "album-art post-content post-content" 10em "tags tags ." -webkit-min-content / 4.5fr 8fr 0.5fr;
+  grid-template: "album-art title profile-photo" min-content "album-art post-content post-content" 10em "tags tags ." min-content / 4.5fr 8fr 0.5fr;
+  gap: 0.75em 1em;
 }
 
-.post-profile-image {
-  grid-area: profile-img;
+.post-profile-photo {
+  grid-area: profile-photo;
+  cursor: pointer;
+  position: relative;
+}
+
+.post-profile-photo:hover .post-username-tooltip {
+  visibility: visible;
+}
+
+.post-username-tooltip {
+  visibility: hidden;
+  position: absolute;
+  color: black;
+  top: 20px;
+  padding: 0.2em;
+  border-radius: 1em;
+  background-color: white;
 }
 
 .post-title {
@@ -26,23 +42,49 @@
 
 .post-album-art {
   grid-area: album-art;
-  background-image: url("../Resources/timhenson.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
+}
+
+.post-album-art img {
+  height: 100%;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  -webkit-transition: all ease-in-out 200ms;
+  transition: all ease-in-out 200ms;
+}
+
+.post-album-art img:hover {
+  scale: 1.008;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .post-content {
   grid-area: post-content;
 }
 
-.post-footer {
-  grid-area: footer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+.post-tags {
+  grid-area: tags;
+}
+
+.post-tags .tag-link {
+  text-decoration: none;
+  text-transform: lowercase;
+  border-radius: 1.5em;
+  border: 1px solid #00b38b;
+  padding: 0.25em 0.5em;
+  margin-right: 0.25em;
+  font-size: 1rem;
+  color: #0d5848;
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+}
+
+.post-tags .tag-link:hover {
+  background-color: #00b38b;
+  color: white;
+  font-size: 1.02rem;
 }
 
 .welcome-layout {
@@ -83,12 +125,16 @@
   margin-left: auto;
   -ms-flex-item-align: end;
       align-self: flex-end;
-  /* padding-top: 2em; */
+  -webkit-transform: translateY(-15%);
+          transform: translateY(-15%);
 }
 
 .dropdown-icon {
   height: 25px;
   width: 25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-image: url("../Resources/caret-down.svg");
   background-size: contain;
   color: black;
@@ -118,6 +164,5 @@ body {
 .container {
   margin: 0 auto;
   width: 20vw;
-  border: 2px solid red;
 }
 /*# sourceMappingURL=main.css.map */
