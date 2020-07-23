@@ -32,19 +32,22 @@
                     width="30"
                 />
             </a>
-            <a class="nav-item nav-link" href="{%url 'feed'%}">
+            <a class="nav-item nav-link" href="{%url 'logout'%}">
                 Home
             </a>
             
             {% if user.is_authenticated %}
-                <div class="dropdown" role="button" data-toggle="dropdown">
-                    <div class="dropdown-icon">
+                <div class="nav-item dropdown">
+                    <div class="dropdown-icon" role="button" data-toggle="dropdown">
                     </div>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item">Logout</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                     </div>
                 </div>
-                </div>
+            {% else %}
+                <a class ="nav-item nav-link ml-auto" href="{% url 'login' %}">
+                    Login
+                </a>
             {% endif %}
         </nav>  
             <!-- Code for side-dropdown bar when Logged in -->
