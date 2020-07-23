@@ -46,10 +46,14 @@ def feed(request):
     if request.method == 'POST':
         form = CreatePostForm(request.POST)
         if form.is_valid():
-            song =  form.cleaned_data['song']
-            artist = form.cleaned_data['artist']
-            content = form.cleaned_data['content']
-            song = Post(title= song, artist = artist, content= content, author= User.objects.get(username= request.user.username))
-            song.save()
+            song     =  form.cleaned_data['song']
+            artist   = form.cleaned_data['artist']
+            content  = form.cleaned_data['content']
+            filename = download_image(song, artist)
+            post     = Post(title= song, artist = artist, content= content,
+                            author= User.objects.get(username= request.user.username),
+                            albumart= filename)
+            post.save()
+
     form = CreatePostForm()
     return render(request, 'feed.html', {'posts': posts, 'form': form})
