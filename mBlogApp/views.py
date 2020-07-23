@@ -6,6 +6,12 @@ from django.contrib import messages
 from .forms import RegistrationForm, LoginForm, CreatePostForm
 from .models import Post
 
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+import requests
+import os
+import time
+
 def welcome(request):
     return render(request, 'welcome.html')
 
