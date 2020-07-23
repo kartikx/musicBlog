@@ -26,9 +26,18 @@
 
 .post-album-art{
     grid-area: album-art;
-    background-image: url('../Resources/timhenson.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
+
+    img{
+        height: 100%;
+        width: 100%;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+        transition: all ease-in-out 100ms;
+        &:hover {
+            scale: 1.02;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+    }
 }
 
 .post-content {
