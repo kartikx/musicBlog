@@ -30,3 +30,28 @@ class SpotifyClient:
     def get_expiration_time(self):
         return self.expires_at
 
+    def get_access_token(self):
+        if self.access_token is not None and self.expires_at is not None and \
+           self.expires_at > datetime.datetime.now():
+            return self.access_token
+        
+        auth_url = 'https://accounts.spotify.com/api/token'
+        auth_data = {
+            'grant_type': 'client_credentials'
+        }
+        auth_header = {
+            'Authorization': f"Basic {self.get_client_creds_b64().decode()}"
+        }
+
+        r = requests.post(auth_url, data= auth_data, headers= auth_header)
+
+        if r.status_code not in range(200, 299):
+            raise Exception("Something went wrong")
+
+        self.access_token = r.json()['access_token']
+        expires_in = r.json()['expires_in']
+        self.expires_at = datetime.datetime.now() + datetime.timedelta(seconds= expires_in)
+
+        return self.access_token
+
+    def get_track(self, song_name, artist_name, search_type= 'track'):
