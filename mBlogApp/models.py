@@ -15,6 +15,8 @@ class Post(models.Model):
     date_posted = models.DateTimeField(blank= False, default= timezone.now)
     author = models.ForeignKey(User, on_delete= models.SET_NULL, blank= True, null= True)
     albumart = models.CharField(max_length= 100, blank= True)
+    genres = models.ManyToManyField(Genre, blank= True)
+    spotifylink = models.CharField(max_length=100, blank= True, null= True)
 
     def __str__(self):
         return f'[{self.title}, {self.artist}]'
