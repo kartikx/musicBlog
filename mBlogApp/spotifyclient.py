@@ -110,3 +110,36 @@ class SpotifyClient:
         return spotify_link
 
     def get_genre_for_track(self, song_name, artist_name):
+        """
+        Need to do this each time you make a request,
+        to ensure the token hasn't expired.
+        """
+        access_token = self.get_access_token()
+
+        first_track_result = self.get_first_track_result(song_name, artist_name)
+
+        if not first_track_result:
+            return []
+
+        lookup_url = first_track_result['album']['artists'][0]['href']
+        headers = {
+            'Authorization':  f'Bearer {access_token}'
+        }
+
+        r = requests.get(lookup_url, headers= headers)
+
+        if r.status_code not in range(200, 299):
+            return []
+        
+        """
+        These are the genre for the Artists, and
+        unfortunately not representative of the 
+        song. I'm going to randomly select out
+        of this list.
+        """
+        genres = r.json()['genres']
+
+        if len(genres) < 2:
+            return genres
+        
+        return [random.choice(genres) for i in range(2)]
