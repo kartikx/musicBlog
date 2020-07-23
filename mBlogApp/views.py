@@ -6,11 +6,7 @@ from django.contrib import messages
 from .forms import RegistrationForm, LoginForm, CreatePostForm
 from .models import Post
 from .apps import MblogappConfig
-
-import requests
-import os
-import random
-import string
+from .utils import *
 
 def welcome(request):
     return render(request, 'welcome.html')

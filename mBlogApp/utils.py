@@ -1,3 +1,8 @@
+import requests
+import os
+import random
+import string
+
 def download_image(album_image_url):
     print("In download image ", album_image_url)
     r = requests.get(album_image_url)
