@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 
 from .forms import RegistrationForm, LoginForm, CreatePostForm
 from .models import Post
+from .apps import MblogappConfig
 
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 import requests
 import os
-import time
+import random
+import string
 
 def welcome(request):
     return render(request, 'welcome.html')
