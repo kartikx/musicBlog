@@ -28,3 +28,5 @@ class SpotifyClient:
         return base64.b64encode(self.get_client_creds().encode())
     
     def get_expiration_time(self):
+        return self.expires_at
+
