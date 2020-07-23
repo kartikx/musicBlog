@@ -17,3 +17,14 @@ class SpotifyClient:
     access_token = None
     expires_at = None
 
+    def __init__(self, client_id, client_secret):
+        self.client_id = client_id
+        self.client_secret = client_secret
+    
+    def get_client_creds(self):
+        return f'{self.client_id}:{self.client_secret}'
+    
+    def get_client_creds_b64(self):
+        return base64.b64encode(self.get_client_creds().encode())
+    
+    def get_expiration_time(self):
