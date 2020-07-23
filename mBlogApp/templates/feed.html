@@ -22,7 +22,7 @@
         </div>
         
         <div class="post-album-art">
-            <a href="#">
+            <a href="{{post.spotifylink}}" target="_blank">
             <img src = "{% static 'AlbumArt/'|add:post.albumart %}" >
             </a>
         </div>
@@ -30,8 +30,12 @@
         <div class="post-content">
             {{post.content}}
         </div>
-        <div class="post-footer">
-            Posted on {{post.date_posted}} by -<a href = "#">{{post.author}}</a>
+        <div class="post-tags">
+            {% for genre in post.genres.all %}
+                <a class="tag-link" href="#">
+                    {{genre.name}}
+                </a>
+            {% endfor %}
         </div>
     </div>
 
