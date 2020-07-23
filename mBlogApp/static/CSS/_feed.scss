@@ -12,8 +12,14 @@
     border-radius: 10px;
 
     display: grid;
-    grid-template: "album-art title title" min-content
+    grid-template: "album-art title profile-photo" min-content
     "album-art post-content post-content" 10em
+    "tags tags ." min-content
+    / 4.5fr 8fr 0.5fr;
+
+    gap: 0.75em 1em;
+}
+
 
 .post-profile-photo {
     grid-area: profile-photo;
