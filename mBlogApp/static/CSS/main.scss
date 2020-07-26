@@ -1,12 +1,11 @@
 @import 'feed', 'welcome', 'navbar';
 
-* {
-    font-family: "Nunito";
-}
+// * {
+//     font-family: "Nunito";
+// }
 
 body {
-    background-image: url("../Resources/main-bg.jpg");
-    background-attachment: fixed;
+    // overflow: hidden;
 }
 
 .container-box {
@@ -16,7 +15,9 @@ body {
     background: white;
 }
 
-.container {
+.my-container {
+    width: 100%;
+    padding: 2rem 0;
     margin: 0 auto;
-    width: 20vw;
+    background: $bg-color;
 }

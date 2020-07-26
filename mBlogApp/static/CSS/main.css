@@ -1,47 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap");
+.create-post-modal {
+  background: white;
+  padding: 1em 2em;
+  position: relative;
+  margin-top: 5em;
+  display: none;
+  position: fixed;
+  top: 10vh;
+  width: 40vw;
+  -webkit-box-shadow: 0 0 0 100vh rgba(2, 35, 70, 0.6);
+          box-shadow: 0 0 0 100vh rgba(2, 35, 70, 0.6);
+  border-radius: 1em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.create-post-modal .form__label {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.create-post-modal .form-control {
+  font-weight: 500;
+  font-size: 1.2rem;
+  font-family: 'sans-serif';
+}
+
+.create-post-modal legend {
+  font-size: 2.0rem;
+  font-weight: 500;
+}
+
+.create-post-modal .btn-outline-success {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.is-visible {
+  display: block;
+}
+
+.modal-close {
+  position: absolute;
+  top: -0.75em;
+  left: -0.75em;
+  padding-top: 4px;
+  text-align: center;
+  font-weight: bolder;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  -webkit-filter: brightness(0.965);
+          filter: brightness(0.965);
+}
+
+@-webkit-keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes modalFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes modalFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .feed {
   width: 40vw;
   margin: 0 auto;
 }
 
 .feed-post {
-  background-color: white;
+  background-color: #f5f5f5;
   font-size: 1rem;
-  margin: 1em 0em;
   padding: 1em;
-  border-radius: 10px;
+  margin: 2rem 0em;
   display: -ms-grid;
   display: grid;
-  grid-template: "album-art title profile-photo" -webkit-min-content "album-art post-content post-content" 10em "tags tags ." -webkit-min-content / 4.5fr 8fr 0.5fr;
-  grid-template: "album-art title profile-photo" min-content "album-art post-content post-content" 10em "tags tags ." min-content / 4.5fr 8fr 0.5fr;
-  gap: 0.75em 1em;
+  -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
+  grid-template: "album-art title profile-photo" 0.5fr "album-art post-content post-content" 12em "upvote tags tags" min-content/minmax(10em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
+  gap: 0.5em 1em;
 }
 
 .post-profile-photo {
   grid-area: profile-photo;
-  cursor: pointer;
   position: relative;
 }
 
-.post-profile-photo:hover .post-username-tooltip {
-  visibility: visible;
+.post-profile-photo a {
+  cursor: pointer;
 }
 
-.post-username-tooltip {
-  visibility: hidden;
-  position: absolute;
+.post-profile-photo a::after {
+  content: attr(data-tooltip);
+  background-color: whitesmoke;
   color: black;
-  top: 20px;
-  padding: 0.2em;
-  border-radius: 1em;
-  background-color: white;
+  position: absolute;
+  bottom: -0.25em;
+  left: 2em;
+  padding: 0.2em 0.4em;
+  border-radius: 15px;
+  display: none;
+}
+
+.post-profile-photo a:hover::after {
+  display: block;
 }
 
 .post-title {
   grid-area: title;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .post-album-art {
   grid-area: album-art;
+  -webkit-transition: -webkit-transform ease-in-out 200ms;
+  transition: -webkit-transform ease-in-out 200ms;
+  transition: transform ease-in-out 200ms;
+  transition: transform ease-in-out 200ms, -webkit-transform ease-in-out 200ms;
+  position: relative;
 }
 
 .post-album-art img {
@@ -50,41 +158,51 @@
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
           box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
   cursor: pointer;
-  -webkit-transition: all ease-in-out 200ms;
-  transition: all ease-in-out 200ms;
+  -webkit-transition: opacity ease-in-out 200ms;
+  transition: opacity ease-in-out 200ms;
 }
 
-.post-album-art img:hover {
-  scale: 1.008;
+.post-album-art:hover {
+  -webkit-transform: scale(1.008);
+          transform: scale(1.008);
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .post-content {
   grid-area: post-content;
+  font-size: 1.2rem;
+  font-family: sans-serif;
 }
 
 .post-tags {
   grid-area: tags;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .post-tags .tag-link {
   text-decoration: none;
-  text-transform: lowercase;
   border-radius: 1.5em;
-  border: 1px solid #00b38b;
+  border: 1px solid #071E22;
   padding: 0.25em 0.5em;
-  margin-right: 0.25em;
+  margin: 0.25em 0.25em 0em 0em;
   font-size: 1rem;
-  color: #0d5848;
-  -webkit-transition: all ease-in-out 250ms;
-  transition: all ease-in-out 250ms;
+  font-weight: 550;
+  background-color: #9DCBBA;
+  color: #071E22;
+  -webkit-transition: background-color ease-in-out 150ms;
+  transition: background-color ease-in-out 150ms;
+  font-family: sans-serif;
+  text-transform: capitalize;
 }
 
 .post-tags .tag-link:hover {
-  background-color: #00b38b;
-  color: white;
-  font-size: 1.02rem;
+  background-color: #8ab4a5;
 }
 
 .welcome-layout {
@@ -120,38 +238,160 @@
   font-weight: 600;
 }
 
-.dropdown {
-  padding-right: 0;
-  margin-left: auto;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  -webkit-transform: translateY(-15%);
-          transform: translateY(-15%);
+.my-navbar {
+  display: -ms-grid;
+  display: grid;
+  grid-template: "navbar__brand . create__post nav__links profile__photo" 3em / 2fr 18fr 4fr 2fr 1fr;
+  width: 100%;
+  background-color: #071E22;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  padding: 1em 1em;
 }
 
-.dropdown-icon {
-  height: 25px;
-  width: 25px;
+.navbar__brand {
+  grid-area: navbar__brand;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 700;
+  font-size: 1.6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url("../Resources/caret-down.svg");
-  background-size: contain;
-  color: black;
+  text-decoration: none;
+  -webkit-transition: color 150ms ease-out;
+  transition: color 150ms ease-out;
 }
 
-.dropdown-icon:hover {
-  background-image: url("../Resources/caret-down-solid.svg");
-  background-size: contain;
+.navbar__brand:hover {
+  text-decoration: none;
+  color: #03b876;
 }
 
-* {
-  font-family: "Nunito";
+.create__post {
+  grid-area: create__post;
+  background-color: #03b876;
+  padding: 0 1em;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column wrap;
+          flex-direction: column wrap;
+  max-width: 80%;
+  white-space: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  -webkit-transition: background-color 150ms ease-out;
+  transition: background-color 150ms ease-out;
 }
 
-body {
-  background-image: url("../Resources/main-bg.jpg");
-  background-attachment: fixed;
+.create__post:hover {
+  background-color: #1aa170;
+}
+
+.nav__links {
+  grid-area: nav__links;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav__links a {
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #9ba7b0;
+  margin-right: 1em;
+  -webkit-transition: color 150ms ease-out;
+  transition: color 150ms ease-out;
+}
+
+.nav__links a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.profile__photo {
+  grid-area: profile__photo;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: relative;
+}
+
+.profile__photo img {
+  max-height: 100%;
+  max-width: 100%;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.profile-dropdown {
+  border-radius: 5px;
+  position: absolute;
+  background: white;
+  top: 4em;
+  left: -5em;
+  white-space: nowrap;
+  display: none;
+}
+
+.profile-dropdown ul {
+  padding: 0 0 0 0;
+  margin: 0;
+}
+
+.profile-dropdown li {
+  font-size: 1.2rem;
+  margin-bottom: 0.1em;
+  width: 8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+}
+
+.profile-dropdown li:hover {
+  background-color: #eeeeee;
+}
+
+.profile-dropdown a {
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+  text-decoration: none;
+}
+
+.dropdown-is-visible {
+  display: block;
 }
 
 .container-box {
@@ -161,8 +401,10 @@ body {
   background: white;
 }
 
-.container {
+.my-container {
+  width: 100%;
+  padding: 2rem 0;
   margin: 0 auto;
-  width: 20vw;
+  background: #729B95;
 }
 /*# sourceMappingURL=main.css.map */
