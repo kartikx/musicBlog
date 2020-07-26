@@ -40,10 +40,33 @@
     </div>
     {% endfor %}
 
-    <div class="container-box">
-        <form method="POST" action="">
-            {% csrf_token %}
+
+    <div class="create-post-modal">
+        <div class="modal-close">
+            X
+        </div>
+        <div class="create-post-form">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <legend class="border-bottom">Create Post</legend>  
             <legend class="border-bottom">Create Post</legend>  
-                        {{form.content.label_tag}}
+                <legend class="border-bottom">Create Post</legend>  
+
+                <div class="form-row">
+                    <!-- {{form.song.label_tag}} -->
+                    <div class="form-group col"><span class="form__label">{{form.song.label_tag}}</span>{% render_field form.song class="form-control" %}</div>
+                    <div class="form-group col"><span class="form__label">{{form.artist.label_tag}}</span>{% render_field form.artist class="form-control" %}</div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <span class="form__label">{{form.content.label_tag}}</span>
+                        {% render_field form.content class="form-control" %}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-outline-success">Post</button>
+            </form>
+        </div>
+    </div>
     </div>
 {% endblock %}
