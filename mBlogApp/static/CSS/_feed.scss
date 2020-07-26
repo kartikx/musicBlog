@@ -45,28 +45,34 @@
         display: block;
     }
 }
+
 .post-title {
     grid-area: title;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.post-album-art{
+.post-album-art {
     grid-area: album-art;
-
-    img{
+    transition: transform ease-in-out 200ms;
+    position: relative;
+    img {
         height: 100%;
         width: 100%;
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
         cursor: pointer;
-        transition: all ease-in-out 200ms;
-        &:hover {
-            scale: 1.008;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-        }
+        transition: opacity ease-in-out 200ms;
+    }
+
+    &:hover {
+        transform: scale(1.008);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     }
 }
 
 .post-content {
     grid-area: post-content;
+    font-size: 1.2rem;
+    font-family: sans-serif;
 }
 
 .post-tags {
