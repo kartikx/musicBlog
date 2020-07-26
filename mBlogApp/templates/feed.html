@@ -1,19 +1,19 @@
 {% extends "layout.html" %}
 <!-- is this needed? -->
 {% load static %}
+{% load widget_tweaks %}
+
 {% block content %}
     <div class="feed">
     <!-- {% if current_user.is_authenticated %} -->
     <!-- {% endif %} -->
+
    {% for post in posts %}
     <div class="feed-post">
         <div class="post-profile-photo">
-            <a href="#">
+            <a href="#" data-tooltip="{{post.author.username}}">
             <img src="{% static post.author.userprofile.profile_photo.url %}"
              class="rounded-circle" height= 35px>
-             <span class="post-username-tooltip">
-                 {{post.author.username}}
-             </span>
             </a>
         </div>
         
@@ -38,8 +38,6 @@
             {% endfor %}
         </div>
     </div>
-                    {% render_field form.song class="form-control" %}
-
     {% endfor %}
 
     <div class="container-box">
