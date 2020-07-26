@@ -38,6 +38,7 @@
             {% endfor %}
         </div>
     </div>
+                    {% render_field form.song class="form-control" %}
 
     {% endfor %}
 
@@ -45,9 +46,6 @@
         <form method="POST" action="">
             {% csrf_token %}
             <legend class="border-bottom">Create Post</legend>  
-            {{form}}
-            <button type="submit">Post</button>
-        </form>
-    </div> 
+                        {{form.content.label_tag}}
     </div>
 {% endblock %}
