@@ -22,25 +22,28 @@
     gap: 0.5em 1em;
 }
 
-
 .post-profile-photo {
     grid-area: profile-photo;
-    cursor: pointer;
     position: relative;
-}
 
-.post-profile-photo:hover .post-username-tooltip{
-    visibility: visible;
-}
+    a {
+        cursor: pointer;
+    }
+    a::after {
+        content: attr(data-tooltip);
+        background-color: whitesmoke;
+        color: black;
+        position: absolute;
+        bottom: -0.25em;
+        left: 2em;
+        padding: 0.2em 0.4em;
+        border-radius: 15px;
+        display: none;
+    }
 
-.post-username-tooltip{
-    visibility: hidden;
-    position: absolute;
-    color: black;
-    top: 20px;
-    padding: 0.2em;
-    border-radius: 1em;
-    background-color: rgb(255, 255, 255);
+    a:hover::after {
+        display: block;
+    }
 }
 .post-title {
     grid-area: title;
