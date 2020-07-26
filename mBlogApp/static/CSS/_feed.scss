@@ -77,28 +77,27 @@
 
 .post-tags {
     grid-area: tags;
+    display: flex;
+    justify-content: flex-end;
 
     .tag-link {
         text-decoration: none;
-        text-transform: lowercase;
         border-radius: 1.5em;
-        border: 1px solid #00b38b;
+        border: 1px solid $clr-primary;
         padding: 0.25em 0.5em;
-        margin-right: 0.25em;
+        margin: 0.25em 0.25em 0em 0em;
         font-size: 1rem;
-        color: #0d5848;
-        transition: all ease-in-out 250ms;
+        font-weight: 550;
 
-        &:hover{
-            background-color: #00b38b;
-            color: white;
-            font-size: 1.02rem;
+        background-color: #9DCBBA;
+        color: $clr-primary;
+        transition: background-color ease-in-out 150ms;
+
+        font-family: sans-serif;
+        text-transform: capitalize;
+
+        &:hover {
+            background-color: #8ab4a5;
         }
-        // .tag-link-one {
-        //     color: #00b38b;
-        // }
-
-        // .tag-link-two {
-        // }
     }
 }
