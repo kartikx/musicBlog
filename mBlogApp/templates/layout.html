@@ -24,33 +24,36 @@
         />
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg bg-light py-0">
-            <a class="navbar-brand" href="#">
-                <img
-                    src="{% static 'Resources/music-note.svg' %}"
-                    height="30"
-                    width="30"
-                />
+        <nav class="my-navbar">
+            <a class="navbar__brand" href="{% url 'feed' %}">
+                MusicBlog
             </a>
-            <a class="nav-item nav-link" href="{%url 'logout'%}">
-                Home
-            </a>
-            
-            {% if user.is_authenticated %}
-                <div class="nav-item dropdown">
-                    <div class="dropdown-icon" role="button" data-toggle="dropdown">
-                    </div>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    </div>
+            <div class="create__post">
+                Post a Song
+            </div>
+            <!-- <div class="search__box">
+            </div> -->
+            <div class="nav__links">
+                <a class="explore" href="#">Explore</a>
+                <a class="communities" href="#">Communities</a>
+                <a href="#" class="about">About</a>
+            </div> 
+            <div class="profile__photo">
+                <!-- insert dp here. -->
+                <img src = "{% static 'Resources/timhenson.jpg' %}">
+
+                <div class="profile-dropdown">
+                    <ul>
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Sample</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
                 </div>
-            {% else %}
-                <a class ="nav-item nav-link ml-auto" href="{% url 'login' %}">
-                    Login
-                </a>
-            {% endif %}
-        </nav>  
-            <!-- Code for side-dropdown bar when Logged in -->
+            </div>
+
+        </nav>
 
         <div class="container">
             {% if messages %}
