@@ -1,23 +1,25 @@
+@import "create-post-modal", "variables";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap');
+
 .feed {
     width: 40vw;
     margin: 0 auto;
 }
 
-
 .feed-post {
-    background-color: white;
+    background-color: #f5f5f5;
     font-size: 1rem;
-    margin: 1em 0em;
     padding: 1em;
-    border-radius: 10px;
-
+    margin: 2rem 0em;
     display: grid;
-    grid-template: "album-art title profile-photo" min-content
-    "album-art post-content post-content" 10em
-    "tags tags ." min-content
-    / 4.5fr 8fr 0.5fr;
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
+    grid-template:
+        "album-art title profile-photo" 0.5fr
+        "album-art post-content post-content" 12em
+        "upvote tags tags" min-content
+        / minmax(10em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
 
-    gap: 0.75em 1em;
+    gap: 0.5em 1em;
 }
 
 
