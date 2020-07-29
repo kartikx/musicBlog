@@ -7,9 +7,10 @@
 }
 
 .feed-post {
-    background-color: #f5f5f5;
+    background-color: $feed-post-color;
+    color: white;
     font-size: 1rem;
-    padding: 1em;
+    padding: 0.75em;
     margin: 2rem 0em;
     display: grid;
     box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
@@ -73,6 +74,7 @@
     grid-area: post-content;
     font-size: 1.2rem;
     font-family: sans-serif;
+    color: $feed-post-text;
 }
 
 .post-tags {
@@ -83,21 +85,20 @@
     .tag-link {
         text-decoration: none;
         border-radius: 1.5em;
-        border: 1px solid $clr-primary;
         padding: 0.25em 0.5em;
         margin: 0.25em 0.25em 0em 0em;
-        font-size: 1rem;
+        font-size: 1.05rem;
         font-weight: 550;
 
-        background-color: #9DCBBA;
-        color: $clr-primary;
+        background-color: $clr-green;
+        color: black;
         transition: background-color ease-in-out 150ms;
 
         font-family: sans-serif;
         text-transform: capitalize;
 
         &:hover {
-            background-color: #8ab4a5;
+            background-color: $clr-green-hover;
         }
     }
 }
