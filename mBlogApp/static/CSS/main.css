@@ -2,14 +2,13 @@
 .create-post-modal {
   background: white;
   padding: 1em 2em;
-  position: relative;
-  margin-top: 5em;
   display: none;
   position: fixed;
   top: 10vh;
   width: 40vw;
-  -webkit-box-shadow: 0 0 0 100vh rgba(2, 35, 70, 0.6);
-          box-shadow: 0 0 0 100vh rgba(2, 35, 70, 0.6);
+  left: 30vw;
+  -webkit-box-shadow: 0 0 0 100vh rgba(29, 185, 84, 0.05);
+          box-shadow: 0 0 0 100vh rgba(29, 185, 84, 0.05);
   border-radius: 1em;
   font-family: 'Montserrat', sans-serif;
 }
@@ -110,7 +109,7 @@
   display: grid;
   -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
-  grid-template: "album-art title profile-photo" 0.5fr "album-art post-content post-content" 12em "upvote tags tags" min-content/minmax(10em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
+  grid-template: "album-art title profile-photo" 0.5fr "album-art post-content post-content" 12em "post-upvote tags tags" min-content/minmax(10em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
   gap: 0.5em 1em;
 }
 
@@ -128,7 +127,7 @@
   background-color: whitesmoke;
   color: black;
   position: absolute;
-  bottom: -0.25em;
+  top: 30px;
   left: 2em;
   padding: 0.2em 0.4em;
   border-radius: 15px;
@@ -177,6 +176,53 @@
   color: #929b8c;
 }
 
+.post-upvote {
+  grid-area: post-upvote;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: sans-serif;
+}
+
+.post-upvote .upvote-btn {
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+  outline: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #929b8c;
+  background-color: transparent;
+  border: 1px solid #929b8c;
+  border-radius: 1.5em;
+  padding: 0.25em 0.5em;
+  margin: 0.25em 0.25em 0em 0em;
+  font-size: 1.05rem;
+  font-weight: 550;
+  width: 10rem;
+}
+
+.post-upvote .upvote-btn:hover {
+  color: #1db954;
+  border-color: #1db954;
+}
+
+.post-upvote .upvote-btn[data-clicked='true'] {
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+  background-color: #1db954;
+  color: white;
+  border-color: transparent;
+}
+
 .post-tags {
   grid-area: tags;
   display: -webkit-box;
@@ -194,16 +240,65 @@
   margin: 0.25em 0.25em 0em 0em;
   font-size: 1.05rem;
   font-weight: 550;
-  background-color: #1db954;
-  color: black;
-  -webkit-transition: background-color ease-in-out 150ms;
-  transition: background-color ease-in-out 150ms;
+  background-color: #121212;
+  color: #1db954;
+  -webkit-transition: color ease-in-out 150ms;
+  transition: color ease-in-out 150ms;
   font-family: sans-serif;
   text-transform: capitalize;
 }
 
 .post-tags .tag-link:hover {
+  color: white;
+}
+
+.sign-up-box {
+  left: 70vw;
+  top: 13.5vh;
+  height: 45vh;
+  width: 20vw;
+  margin: 0 5vw;
+  position: fixed;
+  background-color: #2a2a2a;
+  display: -ms-grid;
+  display: grid;
+  grid-template: "hero" 3fr "intro-txt" 2fr "link" -webkit-min-content / 1fr;
+  grid-template: "hero" 3fr "intro-txt" 2fr "link" min-content / 1fr;
+  font-family: 'Montserrat';
+  font-size: 1.1rem;
+}
+
+.sign-up-box .hero {
+  background-color: #5a5858;
+  background-image: url("../Resources/signupboxbg.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+}
+
+.sign-up-box .intro-text {
+  color: #929b8c;
+  margin-top: 1em;
+  text-align: center;
+  padding: 0 1em;
+}
+
+.sign-up-box a {
+  margin: 0 auto 1em auto;
+  font-weight: bold;
+  background-color: #1db954;
+  color: white;
+  border-radius: 4em;
+  padding: 0.25em 2em;
+  text-decoration: none;
+  -webkit-transition: background-color ease-in-out 150ms;
+  transition: background-color ease-in-out 150ms;
+}
+
+.sign-up-box a:hover {
+  color: white;
   background-color: #068d35;
+  text-decoration: none;
 }
 
 .welcome-layout {
@@ -344,13 +439,13 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  cursor: pointer;
   position: relative;
 }
 
 .profile__photo img {
   max-height: 100%;
   max-width: 100%;
-  cursor: pointer;
   border-radius: 50%;
 }
 
@@ -359,7 +454,7 @@
   position: absolute;
   background: white;
   top: 4em;
-  left: -6em;
+  left: -7em;
   white-space: nowrap;
   display: none;
 }
@@ -413,11 +508,22 @@ body {
   padding: 15px;
   border-width: 5px solid black;
   border-radius: 10px;
-  background: white;
+  background: #2a2a2a;
+  color: #929b8c;
+  font-size: 1.2rem;
+}
+
+.container-box .form-control {
+  background-color: white;
+}
+
+.container-box .form-control:active {
+  background-color: #c3c3c3;
 }
 
 .container-box legend {
   font-weight: 500;
+  color: white;
 }
 
 .container-box .btn {
