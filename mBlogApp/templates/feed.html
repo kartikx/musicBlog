@@ -7,15 +7,15 @@
 {% endblock genreheading %}
 
 {% block content %}
-    <div class="feed">
-    <!-- {% if current_user.is_authenticated %} -->
-    <!-- {% endif %} -->
+    <div class="feed" data-user-id = "{{user.id}}">
 
    {% for post in posts %}
-    <div class="feed-post">
+    <div class="feed-post" data-post-id={{post.id}}>
         <div class="post-profile-photo">
             <a href="#" data-tooltip="{{post.author.username}}">
-            <img src="{% static post.author.userprofile.profile_photo.url %}"
+            <!-- <img src="{% static post.author.userprofile.profile_photo.url %}"
+             class="rounded-circle" height= 35px> -->
+            <img src="{% static 'Resources/timhenson.jpg' %}"
              class="rounded-circle" height= 35px>
             </a>
         </div>
@@ -33,15 +33,30 @@
         <div class="post-content">
             {{post.content}}
         </div>
+        {% if user.is_authenticated %}
+        <div class="post-upvote">
+            <button class="upvote-btn" 
+            {% if post.id in liked_posts %}
+                data-clicked="true"
+            {% else %}
+                data-clicked="false"
+            {% endif %}
+            >
+            Upvote
+            <span class="upvotes-count">{{post.upvotes}}</span>
+            </button>
+        </div>
+        {% endif %}
         <div class="post-tags">
             {% for genre in post.genres.all %}
-                <a class="tag-link" href="#">
+                <a class="tag-link" href="/feed/genre/{{genre.id}}">
                     {{genre.name}}
                 </a>
             {% endfor %}
         </div>
     </div>
     {% endfor %}
+    </div>
 
     <div class="create-post-modal">
         <div class="modal-close">
