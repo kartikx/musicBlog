@@ -13,10 +13,21 @@ body {
     padding: 15px;
     border-width: 5px solid black;
     border-radius: 10px;
-    background: white;
+    // background: white;
+    background: $feed-post-color;
+    color: $feed-post-text;
+    font-size: 1.2rem;
+    .form-control {
+        background-color: rgb(255, 255, 255);
+
+        &:active {
+            background-color: rgb(195, 195, 195);
+        }
+    }
 
     legend {
         font-weight: 500;
+        color: white;
     }
 
     .btn {
