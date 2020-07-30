@@ -77,13 +77,14 @@
     grid-area: profile__photo;
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
+    position: relative;
+
     img {
         max-height: 100%;
         max-width: 100%;
-        cursor: pointer;
         border-radius: 50%;
     }
-    position: relative;
 }
 
 .profile-dropdown{
@@ -91,7 +92,7 @@
     position: absolute;
     background: white;
     top: 4em;
-    left: -6em;
+    left: -7em;
     white-space: nowrap;
     display: none;
     ul {
