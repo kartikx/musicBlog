@@ -1,14 +1,14 @@
 @import 'variables';
+
 .create-post-modal {
     background: white;
     padding: 1em 2em;
-    position: relative;
-    margin-top: 5em;
     display: none;
     position: fixed;
     top: 10vh;
     width: 40vw;
-    box-shadow: 0 0 0 100vh rgba(#022346, 0.6);
+    left: 30vw;
+    box-shadow: 0 0 0 100vh rgba($clr-green, 0.05);
     border-radius: 1em;
     font-family: 'Montserrat', sans-serif;
     .form__label {
