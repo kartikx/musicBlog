@@ -77,6 +77,42 @@
     color: $feed-post-text;
 }
 
+.post-upvote {
+    grid-area: post-upvote;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: sans-serif;
+    .upvote-btn{
+        transition: all 350ms ease-in-out;
+        outline: none;
+        display: flex;
+        justify-content: space-around;
+        // border: none;
+        color: $feed-post-text;
+        // background-color: $clr-green;
+        background-color: transparent;
+        border: 1px solid $feed-post-text;
+
+        border-radius: 1.5em;
+        padding: 0.25em 0.5em;
+        margin: 0.25em 0.25em 0em 0em;
+        font-size: 1.05rem;
+        font-weight: 550;
+        width: 10rem;
+        &:hover {
+            color: $clr-green;
+            border-color: $clr-green;
+        }
+    }
+    .upvote-btn[data-clicked = 'true'] {
+        transition: all 350ms ease-in-out;
+        background-color: $clr-green;
+        color: white;
+        border-color: transparent;
+    }
+}
+
 .post-tags {
     grid-area: tags;
     display: flex;
@@ -90,14 +126,20 @@
         font-size: 1.05rem;
         font-weight: 550;
 
-        background-color: $clr-green;
-        color: black;
-        transition: background-color ease-in-out 150ms;
+        // background-color: $clr-green;
+        background-color: $bg-color;
+        color: $clr-green;
+        transition: color ease-in-out 150ms;
 
         font-family: sans-serif;
         text-transform: capitalize;
 
         &:hover {
+            // background-color: $clr-green-hover;
+            color: white;
+        }
+    }
+}
 
 .sign-up-box{
     left: 70vw;
