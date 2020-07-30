@@ -98,7 +98,52 @@
         text-transform: capitalize;
 
         &:hover {
+
+.sign-up-box{
+    left: 70vw;
+    top: 13.5vh;
+    height: 45vh;
+    width: 20vw;
+    margin: 0 5vw;
+    position: fixed;
+
+    background-color: $feed-post-color;
+
+    display: grid;
+    grid-template: "hero" 3fr "intro-txt" 2fr "link" min-content / 1fr ;
+
+    font-family: 'Montserrat';
+    font-size: 1.1rem;
+    
+    .hero {
+        background-color: rgb(90, 88, 88);
+        background-image: url('../Resources/signupboxbg.jpg');
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .intro-text {
+        color: $feed-post-text;
+        margin-top: 1em;
+        text-align: center;
+        padding: 0 1em;
+    }
+
+    a {
+        margin: 0 auto 1em auto;
+        font-weight: bold;
+        background-color: $clr-green;
+        color: white;
+        border-radius: 4em;
+        padding: 0.25em 2em;
+        text-decoration: none;
+        transition: background-color ease-in-out 150ms;
+
+        &:hover {
+            color: white;
             background-color: $clr-green-hover;
+            text-decoration: none;
         }
     }
 }
