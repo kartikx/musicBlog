@@ -17,7 +17,7 @@
     grid-template:
         "album-art title profile-photo" 0.5fr
         "album-art post-content post-content" 12em
-        "upvote tags tags" min-content
+        "post-upvote tags tags" min-content
         / minmax(10em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
 
     gap: 0.5em 1em;
@@ -35,7 +35,7 @@
         background-color: whitesmoke;
         color: black;
         position: absolute;
-        bottom: -0.25em;
+        top: 30px;
         left: 2em;
         padding: 0.2em 0.4em;
         border-radius: 15px;
