@@ -16,11 +16,11 @@
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
             crossorigin="anonymous"
         />
+
         <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-            integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA="
-            crossorigin="anonymous"
+            rel="icon"
+            href="https://img.icons8.com/cotton/64/000000/piano.png"
+            type="image/x-icon"
         />
     </head>
     <body>
@@ -28,46 +28,52 @@
             <a class="navbar__brand" href="{% url 'feed' %}">
                 MusicBlog
             </a>
+            {% if user.is_authenticated %}
             <div class="create__post">
                 Post a Song
             </div>
-            <!-- <div class="search__box">
-            </div> -->
+            {% endif %}
             <div class="nav__links">
                 <a class="explore" href="#">Explore</a>
                 <a class="communities" href="#">Communities</a>
                 <a href="#" class="about">About</a>
-            </div> 
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'login' %}" class="login">Login</a>
+                {% endif %}
+            </div>
+            {% if user.is_authenticated %}
             <div class="profile__photo">
                 <!-- insert dp here. -->
-                <img src = "{% static 'Resources/timhenson.jpg' %}">
-
+                <img src="{% static 'Resources/timhenson.jpg' %}" />
                 <div class="profile-dropdown">
                     <ul>
                         <li><a href="#">My Profile</a></li>
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Privacy</a></li>
                         <li><a href="#">Sample</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
                     </ul>
                 </div>
             </div>
-
+            {% endif %}
         </nav>
 
         <div class="my-container">
             {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
-                        {{message}}
-                        <button type="button" class="close" data-dismiss="alert">
-                            <span>
-                                &times;
-                            </span>
-                        </button>
-                    </div>
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>
+                        &times;
+                    </span>
+                </button>
+            </div>
+            {% endfor %} 
                 {% endfor %}
+            {% endfor %} 
             {% endif %}
+            <div class="pb-2"></div> 
             {% block content%} 
             {% endblock content %}
         </div>
