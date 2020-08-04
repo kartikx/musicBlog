@@ -1,6 +1,7 @@
 const createPostButton = document.querySelector(".create__post");
 const modal = document.querySelector(".create-post-modal");
 const closeButton = modal.querySelector(".modal-close");
+const submitButton = modal.querySelector("btn");
 
 createPostButton.addEventListener("click", (_) => {
     modal.classList.add("is-visible");

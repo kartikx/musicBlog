@@ -1,17 +1,25 @@
 @import "create-post-modal", "variables";
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap');
 
 .feed {
-    width: 40vw;
-    margin: 0 auto;
+    // width: 40vw;
+    // margin: 0 auto;
+    grid-area: middle;
 }
+.left-panel {
+    grid-area: left;
+}
+
+// .right-panel {
+//     grid-area: right;
+// }
 
 .feed-post {
     background-color: $feed-post-color;
-    color: white;
     font-size: 1rem;
     padding: 0.75em;
-    margin: 2rem 0em;
+    margin-bottom: 2rem;
     display: grid;
     box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
     grid-template:
@@ -49,6 +57,7 @@
 
 .post-title {
     grid-area: title;
+    color: white;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -72,9 +81,10 @@
 
 .post-content {
     grid-area: post-content;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: sans-serif;
     color: $feed-post-text;
+    word-wrap: break-word;
 }
 
 .post-upvote {
@@ -142,12 +152,12 @@
 }
 
 .sign-up-box{
-    left: 70vw;
-    top: 13.5vh;
+    // left: 70vw;
+    // top: 13.5vh;
+    grid-area: right;
     height: 45vh;
-    width: 20vw;
+    // width: 30vw;
     margin: 0 5vw;
-    position: fixed;
 
     background-color: $feed-post-color;
 

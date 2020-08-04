@@ -24,6 +24,7 @@ class RegistrationForm(forms.Form):
         return username_entered
 
     def clean(self):
+        # can't I use self.cleaned_data directly?
         cleaned_data = super(RegistrationForm, self).clean()
         password1 = cleaned_data.get("password")
         password2 = cleaned_data.get("confirm_password")

@@ -1,33 +1,37 @@
 @import 'feed', 'welcome', 'navbar';
 
 body {
-    background-color : pink;
+    background: $bg-color;
     height: calc(100vh - 5rem);
     overflow-x: hidden;
 }
 
 .container-box {
+    grid-area: middle;
     font-family: 'Montserrat';
-    width: 60%;
+    width: 80%;
     margin: 2em auto;
     padding: 15px;
-    border-width: 5px solid black;
     border-radius: 10px;
     // background: white;
     background: $feed-post-color;
     color: $feed-post-text;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     .form-control {
-        background-color: rgb(255, 255, 255);
-
-        &:active {
-            background-color: rgb(195, 195, 195);
+        background-color: $form-control-bg;
+        border-color: $feed-post-text;
+        color: white;        
+        &:focus {
+            background-color: $feed-post-color;
+            color: white;
         }
     }
 
     legend {
         font-weight: 500;
         color: white;
+        border-bottom: 1px solid $feed-post-text;
+        margin-bottom: 0.5em;
     }
 
     .btn {
@@ -37,8 +41,14 @@ body {
 
 .my-container {
     width: 100%;
-    padding: 0 0 2rem 0;
-    margin: 0 auto;
+    padding: 2rem 0 2rem 0;
     background: $bg-color;
     min-height: 100%;
+    display: grid;
+    grid-template:  "alert alert alert" min-content
+                    "left middle right" min-content / 3fr 4fr 3fr;
+}
+
+.alert {
+    grid-area: alert;
 }

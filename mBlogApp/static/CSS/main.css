@@ -95,16 +95,18 @@
 }
 
 .feed {
-  width: 40vw;
-  margin: 0 auto;
+  grid-area: middle;
+}
+
+.left-panel {
+  grid-area: left;
 }
 
 .feed-post {
-  background-color: #2a2a2a;
-  color: white;
+  background-color: #202224;
   font-size: 1rem;
   padding: 0.75em;
-  margin: 2rem 0em;
+  margin-bottom: 2rem;
   display: -ms-grid;
   display: grid;
   -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
@@ -140,6 +142,7 @@
 
 .post-title {
   grid-area: title;
+  color: white;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -171,9 +174,10 @@
 
 .post-content {
   grid-area: post-content;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: sans-serif;
   color: #929b8c;
+  word-wrap: break-word;
 }
 
 .post-upvote {
@@ -240,7 +244,7 @@
   margin: 0.25em 0.25em 0em 0em;
   font-size: 1.05rem;
   font-weight: 550;
-  background-color: #121212;
+  background-color: #0e0f0f;
   color: #1db954;
   -webkit-transition: color ease-in-out 150ms;
   transition: color ease-in-out 150ms;
@@ -253,13 +257,10 @@
 }
 
 .sign-up-box {
-  left: 70vw;
-  top: 13.5vh;
+  grid-area: right;
   height: 45vh;
-  width: 20vw;
   margin: 0 5vw;
-  position: fixed;
-  background-color: #2a2a2a;
+  background-color: #202224;
   display: -ms-grid;
   display: grid;
   grid-template: "hero" 3fr "intro-txt" 2fr "link" -webkit-min-content / 1fr;
@@ -496,34 +497,39 @@
 }
 
 body {
-  background-color: pink;
+  background: #0e0f0f;
   height: calc(100vh - 5rem);
   overflow-x: hidden;
 }
 
 .container-box {
+  grid-area: middle;
   font-family: 'Montserrat';
-  width: 60%;
+  width: 80%;
   margin: 2em auto;
   padding: 15px;
-  border-width: 5px solid black;
   border-radius: 10px;
-  background: #2a2a2a;
+  background: #202224;
   color: #929b8c;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .container-box .form-control {
-  background-color: white;
+  background-color: #181a1b;
+  border-color: #929b8c;
+  color: white;
 }
 
-.container-box .form-control:active {
-  background-color: #c3c3c3;
+.container-box .form-control:focus {
+  background-color: #202224;
+  color: white;
 }
 
 .container-box legend {
   font-weight: 500;
   color: white;
+  border-bottom: 1px solid #929b8c;
+  margin-bottom: 0.5em;
 }
 
 .container-box .btn {
@@ -532,9 +538,16 @@ body {
 
 .my-container {
   width: 100%;
-  padding: 0 0 2rem 0;
-  margin: 0 auto;
-  background: #121212;
+  padding: 2rem 0 2rem 0;
+  background: #0e0f0f;
   min-height: 100%;
+  display: -ms-grid;
+  display: grid;
+  grid-template: "alert alert alert" -webkit-min-content "left middle right" -webkit-min-content / 3fr 4fr 3fr;
+  grid-template: "alert alert alert" min-content "left middle right" min-content / 3fr 4fr 3fr;
+}
+
+.alert {
+  grid-area: alert;
 }
 /*# sourceMappingURL=main.css.map */

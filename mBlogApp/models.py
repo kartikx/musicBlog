@@ -14,6 +14,8 @@ class Post(models.Model):
     content = models.TextField(blank= True, null= True)
     date_posted = models.DateTimeField(blank= False, default= timezone.now)
     author = models.ForeignKey(User, on_delete= models.SET_NULL, blank= True, null= True)
+    upvotes = models.IntegerField(blank= True, default= 0)
+    upvotedby = models.ManyToManyField(User, blank=True, related_name='liked_posts')
     albumart = models.CharField(max_length= 100, blank= True)
     genres = models.ManyToManyField(Genre, blank= True)
     spotifylink = models.CharField(max_length=100, blank= True, null= True)
