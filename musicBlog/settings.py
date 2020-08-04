@@ -27,7 +27,7 @@ SECRET_KEY = "3=^et&8f1kp55h_28fq_irbn_adn&2anvez5q476uogre102cz"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['musicbl0g.herokuapp.com']
 
 # Static files (CSS, JavaScript, Images)
 
