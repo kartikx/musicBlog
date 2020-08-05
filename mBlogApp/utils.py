@@ -11,8 +11,8 @@ def download_image(album_image_url):
 
     filename = get_random_alphanumeric_string(8) + '.jpg'
 
-    if not os.path.exists(album_dir):
-        os.makedirs(album_dir)
+    # if not os.path.exists(album_dir):
+    #     os.makedirs(album_dir)
 
     image_path = os.path.join(album_dir, filename)
     print(image_path)
