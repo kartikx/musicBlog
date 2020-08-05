@@ -1,3 +1,4 @@
+import os
 from django.apps import AppConfig
 from .spotifyclient import SpotifyClient
 
@@ -7,8 +8,9 @@ from .spotifyclient import SpotifyClient
 """
 class MblogappConfig(AppConfig):
     name = 'mBlogApp'
-    client_id = "11c45ddf7bc044b6b6ebff5cf3fc77cd"
-    client_secret = "ab374863a10240ab835146fc21d71205"
+    # Also set up in Heroku.
+    client_id = os.environ.get('SPOTIFY_CLIENT_ID')
+    client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
 
     client = SpotifyClient(client_id = client_id, client_secret= client_secret)
 
