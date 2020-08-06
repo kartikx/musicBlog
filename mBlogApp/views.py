@@ -100,13 +100,13 @@ def createAndSavePost(request, form):
     artist   = form.cleaned_data['artist']
     content  = form.cleaned_data['content']
     client   = MblogappConfig.client
-    filename = download_image(client.get_first_track_album_image_url(song, artist))
     genres   = client.get_genre_for_track(song, artist)
     spotifylink = client.get_spotify_link(song, artist)
     post     = Post(title= song, artist = artist, content= content,
                     author= User.objects.get(username= request.user.username),
-                    albumart= filename, spotifylink= spotifylink)
+                    spotifylink= spotifylink)
     post.save()
+    download_image(post, client.get_first_track_album_image_url(song, artist))
     
     for genre in genres:
         genre_instance = Genre.objects.filter(name= genre).first()
