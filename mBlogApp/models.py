@@ -16,7 +16,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete= models.SET_NULL, blank= True, null= True)
     upvotes = models.IntegerField(blank= True, default= 0)
     upvotedby = models.ManyToManyField(User, blank=True, related_name='liked_posts')
-    albumart = models.CharField(max_length= 100, blank= True)
+    albumart = models.ImageField(default='defaultalbumart.jpg', upload_to='album_art', blank=True, null=True)
     genres = models.ManyToManyField(Genre, blank= True)
     spotifylink = models.CharField(max_length=100, blank= True, null= True)
 
