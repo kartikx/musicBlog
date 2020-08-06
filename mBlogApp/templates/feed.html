@@ -29,7 +29,7 @@
             
             <div class="post-album-art">
                 <a href="{{post.spotifylink}}" target="_blank">
-                <img src = "{% static 'AlbumArt/'|add:post.albumart %}" >
+                <img src = "{{ post.albumart.url }}">
                 </a>
             </div>
             
