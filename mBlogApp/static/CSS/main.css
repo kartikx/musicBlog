@@ -94,14 +94,6 @@
   }
 }
 
-.feed {
-  grid-area: middle;
-}
-
-.left-panel {
-  grid-area: left;
-}
-
 .feed-post {
   background-color: #202224;
   font-size: 1rem;
@@ -111,7 +103,7 @@
   display: grid;
   -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
-  grid-template: "album-art title profile-photo" 0.5fr "album-art post-content post-content" 12em "post-upvote tags tags" min-content/minmax(10em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
+  grid-template: "album-art title profile-photo" 0.5fr "album-art post-content post-content" 12em "post-upvote tags tags" min-content/minmax(15em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
   gap: 0.5em 1em;
 }
 
@@ -144,6 +136,7 @@
   grid-area: title;
   color: white;
   font-family: 'Montserrat', sans-serif;
+  word-wrap: break-word;
 }
 
 .post-album-art {
@@ -453,7 +446,7 @@
 .profile-dropdown {
   border-radius: 5px;
   position: absolute;
-  background: white;
+  background: #040404;
   top: 4em;
   left: -7em;
   white-space: nowrap;
@@ -461,7 +454,7 @@
 }
 
 .profile-dropdown ul {
-  padding: 0 0 0 0;
+  padding: 0 0 0.1em 0;
   margin: 0;
 }
 
@@ -478,10 +471,6 @@
   list-style: none;
 }
 
-.profile-dropdown li:hover {
-  background-color: #eeeeee;
-}
-
 .profile-dropdown a {
   text-align: center;
   width: 100%;
@@ -494,6 +483,90 @@
 
 .dropdown-is-visible {
   display: block;
+}
+
+.profile-photo {
+  position: relative;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.profile-photo img {
+  border-radius: 50%;
+}
+
+.left-panel[data-owner="true"] {
+  cursor: pointer;
+}
+
+.left-panel[data-owner="true"] .profile-photo::after {
+  content: 'Change Photo';
+  text-align: center;
+  white-space: none;
+  position: absolute;
+  display: block;
+  color: #1db954;
+  font-size: 1.2rem;
+  background-color: #040404;
+  width: 75%;
+  border-radius: 5em;
+  top: 45%;
+  left: 12%;
+  display: none;
+  font-family: sans-serif;
+}
+
+.left-panel[data-owner="true"] .profile-photo:hover::after {
+  display: block;
+}
+
+.left-panel[data-owner="true"] .profile-photo:hover img {
+  opacity: 0.4;
+}
+
+.follow-btn {
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #929b8c;
+  background-color: #1db954;
+  background-color: transparent;
+  border: 1px solid #929b8c;
+  font-family: sans-serif;
+  border-radius: 1.5em;
+  padding: 0.25em 0.5em;
+  margin: 1em 0.25em 0em 0em;
+  font-size: 1.00rem;
+  font-weight: 550;
+  width: 10rem;
+  outline: none;
+}
+
+.follow-btn:focus {
+  outline: none;
+}
+
+.follow-btn:hover {
+  color: #1db954;
+  border-color: #1db954;
+}
+
+.follow-btn[data-clicked='true'] {
+  outline: none;
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+  background-color: #1db954;
+  color: white;
+  border-color: transparent;
+}
+
+h1 {
+  color: white;
+  font-family: 'Montserrat';
 }
 
 body {
@@ -543,11 +616,32 @@ body {
   min-height: 100%;
   display: -ms-grid;
   display: grid;
-  grid-template: "alert alert alert" -webkit-min-content "left middle right" -webkit-min-content / 3fr 4fr 3fr;
-  grid-template: "alert alert alert" min-content "left middle right" min-content / 3fr 4fr 3fr;
+  grid-template: "alert alert alert" -webkit-min-content "left middle right" -webkit-min-content / 3fr 4.5fr 3fr;
+  grid-template: "alert alert alert" min-content "left middle right" min-content / 3fr 4.5fr 3fr;
 }
 
 .alert {
   grid-area: alert;
+}
+
+.feed {
+  grid-area: middle;
+}
+
+.left-panel {
+  grid-area: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=main.css.map */
