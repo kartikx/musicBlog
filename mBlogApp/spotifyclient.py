@@ -81,7 +81,7 @@ class SpotifyClient:
     def get_first_track_result(self, song_name, artist_name):
         search_result_json = self.get_track(song_name, artist_name, 'track')
 
-        if not search_result_json:
+        if not search_result_json['tracks']['items']:
             return {}
 
         first_track_result = search_result_json['tracks']['items'][0]
@@ -93,7 +93,7 @@ class SpotifyClient:
 
         # If nothing found return a default Album Image.
         if not first_track_result:
-            return 'https://i.scdn.co/image/ab67616d0000b2737a799cc62e624fd6432779e3'
+            return ''
 
         album_image_url = first_track_result['album']['images'][0]['url']
         return album_image_url
