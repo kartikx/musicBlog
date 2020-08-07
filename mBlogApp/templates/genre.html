@@ -1,8 +1,9 @@
-{% include "feed.html" %}
-
-<!-- {% block genreheading %}
-    <h1>
-        AAAAAAAA
-    </h1>
-{% endblock genreheading %} -->
+{% extends "layout.html" %}
+{% block content %}
+    <div class="genre-info">
+        <h1>{{genre.name | title}}</h1>
+        <p>{{genre.desc}}</p>
+    </div>
+    {% include 'includes/feed-posts.html' %}
+{% endblock %}
 
