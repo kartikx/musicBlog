@@ -1,0 +1,62 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="feed" data-user-id = "{{user.id}}">
+{% for post in posts %}
+    <div class="feed-post" data-post-id={{post.id}}>
+        <div class="post-profile-photo">
+            <a href="{% url 'profile' username=post.author.username %}" data-tooltip="{{post.author.username}}">
+            <img src="{{ post.author.userprofile.profile_photo.url }}"
+            class="rounded-circle" height= 35px>
+            </a>
+        </div>
+        
+        <div class="post-title">
+            <h2>{{post.title}} - {{post.artist}}</h2>
+        </div>
+        
+        <div class="post-album-art">
+            <a href="{{post.spotifylink}}" target="_blank">
+            <img src = "{{ post.albumart.url }}">
+            </a>
+        </div>
+        
+        <div class="post-content">
+            {{post.content}}
+        </div>
+        {% if user.is_authenticated %}
+            <div class="post-upvote">
+                <button class="upvote-btn" 
+                    {% if post.id in liked_posts %}
+                        data-clicked="true"
+                    {% else %}
+                        data-clicked="false"
+                    {% endif %}
+                >
+                Upvote
+                <span class="upvotes-count">{{post.upvotes}}</span>
+                </button>
+        </div>
+        {% endif %}
+        <div class="post-tags">
+            {% for genre in post.genres.all %}
+                <a class="tag-link" href="/genre/{{genre.name|slugify}}/">
+                    {{genre.name}}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% if not user.is_authenticated %}
+<div class="sign-up-box">
+        <div class="hero"></div>
+        <span class="intro-text">MusicBlog is <strong>THE</strong> place 
+        to share Music with the people you love. Don't miss out on the tons of
+        cool features. It just takes one minute to create an account!</span>
+        <a href="{% url 'register' %}">Sign Up</a>
+</div>
+{% endif %}
+
+<script src = "{% static 'JS/upvote.js' %}"></script>
