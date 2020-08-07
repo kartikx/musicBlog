@@ -1,10 +1,7 @@
-/**
- * TODO
- * Implement Toggle Button functionality, so that User isn't allowed to upvote twice.
- * Also implement class changes when toggle Upvote Button.
- * Implement Feed Generation using API, so that Upvote immediately appears.
- */
 
+/**
+ * TODO understand this and why it's needed.
+ */
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== "") {
@@ -27,7 +24,6 @@ const csrftoken = getCookie("csrftoken");
 
 const posts = document.querySelectorAll('.feed-post');
 const current_user_id = document.querySelector('.feed').getAttribute('data-user-id');
-
 
 
 posts.forEach((post) => {
@@ -84,3 +80,8 @@ async function upvotePost(post) {
         // body: JSON.stringify(data),
     });
 }
+
+window.setTimeout(function() {
+    $(".alert").alert('close')
+}, 2000);
+
