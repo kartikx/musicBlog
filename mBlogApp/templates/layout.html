@@ -47,10 +47,9 @@
                 <img src="{% static 'Resources/timhenson.jpg' %}" />
                 <div class="profile-dropdown">
                     <ul>
-                        <li><a href="#">My Profile</a></li>
+                        <li><a href="{% url 'profile' username=request.user.username %}">My Profile</a></li>
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Sample</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     </ul>
                 </div>
