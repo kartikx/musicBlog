@@ -116,6 +116,16 @@ def createAndSavePost(request, form):
             post.genres.add(genre_instance)
     post.save()
 
+def profile(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return HttpResponse(status=400)
+    
+    posts = Post.objects.filter(author=user)
+
+    return render(request, 'profile.html', {'profile_user': user, 'posts': posts})
+
 def logout(request):
     auth_logout(request)
     return redirect('welcome')

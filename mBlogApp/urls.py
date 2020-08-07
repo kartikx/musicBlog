@@ -8,7 +8,6 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('feed/', views.feed, name='feed'),
     path('logout/', views.logout, name='logout'),
+    path('user/<str:username>/', views.profile, name='profile'),
     path('genre/<slug:genrename>/', views.genre, name='genre'),
 ]
-
-# Currently doing genre via the primary key, might try to switch to the genre name instead? - separated?
