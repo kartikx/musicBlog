@@ -2,14 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap');
 
-.feed {
-    // width: 40vw;
-    // margin: 0 auto;
-    grid-area: middle;
-}
-.left-panel {
-    grid-area: left;
-}
 
 // .right-panel {
 //     grid-area: right;
@@ -26,7 +18,7 @@
         "album-art title profile-photo" 0.5fr
         "album-art post-content post-content" 12em
         "post-upvote tags tags" min-content
-        / minmax(10em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
+        / minmax(15em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
 
     gap: 0.5em 1em;
 }
@@ -59,6 +51,7 @@
     grid-area: title;
     color: white;
     font-family: 'Montserrat', sans-serif;
+    word-wrap: break-word;
 }
 
 .post-album-art {
