@@ -5,6 +5,9 @@ import string
 import tempfile
 
 def download_image(post, album_image_url):
+    if not album_image_url:
+        return;
+
     r = requests.get(album_image_url)
 
     tf = tempfile.NamedTemporaryFile()
