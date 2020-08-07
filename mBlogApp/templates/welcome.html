@@ -1,13 +1,31 @@
-{% extends "layout.html" %}
-{% block content %}
-    <div class="welcome-layout">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicBlog</title>
+    <link
+    rel="icon"
+    href="https://img.icons8.com/cotton/64/000000/piano.png"
+    type="image/x-icon"
+    />
+    {% load static %}
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'CSS/welcome.css' %}"
+    />
+</head>
+<body>
+    <div class="content">
         <h2>MusicBlog is a Place to share Music Suggestions!</h2>
         <div class="link-container">
 
                 <a class="btn btn-outline-dark" href="{% url 'login' %}"> Login </a>
 
-                <a class="btn btn-outline-dark" href="#"> Browse as a Guest </a>
+                <a class="btn btn-outline-dark" href="{% url 'feed' %}"> Browse as a Guest </a>
         </div>
     </div>
-{% endblock %}
+</body>
+</html>
 
