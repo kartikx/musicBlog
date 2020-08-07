@@ -16,7 +16,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete= models.SET_NULL, blank= True, null= True)
     upvotes = models.IntegerField(blank= True, default= 0)
     upvotedby = models.ManyToManyField(User, blank=True, related_name='liked_posts')
-    albumart = models.ImageField(default='defaultalbumart.jpg', upload_to='album_art', blank=True, null=True)
+    albumart = models.ImageField(default='album_art/default.jpg', upload_to='album_art', blank=True, null=True)
     genres = models.ManyToManyField(Genre, blank= True)
     spotifylink = models.CharField(max_length=100, blank= True, null= True)
 
@@ -25,4 +25,4 @@ class Post(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)
-    profile_photo = models.ImageField(default='default.jpg', upload_to = 'profile_photos')
+    profile_photo = models.ImageField(default='profile_photos/default.jpg', upload_to = 'profile_photos')
