@@ -3,8 +3,9 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponse
+from django.conf import settings
 
-from .forms import RegistrationForm, LoginForm, CreatePostForm
+from .forms import RegistrationForm, LoginForm, CreatePostForm, UploadPhotoForm
 from .models import Post, Genre
 from .apps import MblogappConfig
 from .utils import *
@@ -52,7 +53,7 @@ def login(request):
     return render(request, 'login.html', {'form': form, 'show_valid': False})
 
 def feed(request):
-    posts = Post.objects.all().order_by('-date_posted')
+    posts = Post.objects.all().order_by('-date_posted')[:10]
     if not request.user.is_anonymous:
         liked_posts = request.user.liked_posts.all()
         liked_posts_ids = [post.id for post in liked_posts]
@@ -88,14 +89,22 @@ def genre(request, genrename):
             createAndSavePost(request, form)
             return redirect('feed')
 
+    # Get and Save Genre Desc. if Empty
+    if not genre.desc:
+        get_and_save_genre_desc(genre)
+
     # Get songs which contain the genre.
-    posts = Post.objects.filter(genres__id = genre.id).order_by('-date_posted')
+    posts = Post.objects.filter(genres__id = genre.id).order_by('-date_posted')[:10]
     form = CreatePostForm()
 
     return render(request, 'genre.html', {'genre': genre , 'posts': posts, 'form': form, 'liked_posts': liked_posts_ids})
 
 
 def createAndSavePost(request, form):
+    if (request.user.post_set.count() > settings.MAX_POSTS):
+        messages.add_message(request, messages.ERROR, "Due to server constraints, we can't allow more than 5 posts. Sorry :(")
+        return
+
     song     =  form.cleaned_data['song']
     artist   = form.cleaned_data['artist']
     content  = form.cleaned_data['content']
@@ -106,7 +115,7 @@ def createAndSavePost(request, form):
                     author= User.objects.get(username= request.user.username),
                     spotifylink= spotifylink)
     post.save()
-    download_image(post, client.get_first_track_album_image_url(song, artist))
+    download_image(request, post, client.get_first_track_album_image_url(song, artist))
     
     for genre in genres:
         genre_instance = Genre.objects.filter(name= genre).first()
