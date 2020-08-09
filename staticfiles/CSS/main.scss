@@ -1,0 +1,66 @@
+@import 'profile', 'feed', 'welcome', 'navbar', 'genre';
+
+body {
+    background: black;
+    min-height: calc(100vh - 5rem);
+    overflow-x: hidden;
+}
+
+.container-box {
+    grid-area: middle;
+    font-family: 'Montserrat';
+    width: 80%;
+    margin: 2em auto;
+    padding: 15px;
+    border-radius: 10px;
+    background: $feed-post-color;
+    color: $feed-post-text;
+    font-size: 1.4rem;
+    .form-control {
+        background-color: $form-control-bg;
+        border-color: $feed-post-text;
+        color: white;        
+        &:focus {
+            background-color: $feed-post-color;
+            color: white;
+        }
+    }
+
+    legend {
+        font-weight: 500;
+        color: white;
+        border-bottom: 1px solid $feed-post-text;
+        margin-bottom: 0.5em;
+    }
+
+    .btn {
+        font-weight: 500;
+    }
+}
+
+.my-container {
+    width: 100%;
+    padding: 2rem 0 2rem 0;
+    background: $bg-color;
+    // min-height: 100%;
+    display: grid;
+    grid-template:  ". alert1 ." min-content
+                    "left middle right" min-content / 3fr 4.5fr 3fr;
+    min-height: calc(100vh);
+}
+
+.alert {
+    grid-area: alert1;
+}
+
+.feed {
+    grid-area: middle;
+}
+
+.left-panel {
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}

@@ -1,0 +1,194 @@
+@import "create-post-modal", "variables";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap');
+
+
+// .right-panel {
+//     grid-area: right;
+// }
+
+.feed-post {
+    background-color: $feed-post-color;
+    font-size: 1rem;
+    padding: 0.75em;
+    margin-bottom: 2rem;
+    display: grid;
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.3);
+    grid-template:
+        "album-art title profile-photo" 0.5fr
+        "album-art post-content post-content" 12em
+        "post-upvote tags tags" min-content
+        / minmax(15em, 4.5fr) minmax(4em, 8fr) minmax(2em, 0.5fr);
+
+    gap: 0.5em 1em;
+}
+
+.post-profile-photo {
+    grid-area: profile-photo;
+    position: relative;
+
+    a {
+        cursor: pointer;
+    }
+    a::after {
+        content: attr(data-tooltip);
+        background-color: whitesmoke;
+        color: black;
+        position: absolute;
+        top: 30px;
+        left: 2em;
+        padding: 0.2em 0.4em;
+        border-radius: 15px;
+        display: none;
+    }
+
+    a:hover::after {
+        display: block;
+    }
+}
+
+.post-title {
+    grid-area: title;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    word-wrap: break-word;
+}
+
+.post-album-art {
+    grid-area: album-art;
+    transition: transform ease-in-out 200ms;
+    position: relative;
+    img {
+        height: 100%;
+        width: 100%;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+        transition: opacity ease-in-out 200ms;
+    }
+
+    &:hover {
+        transform: scale(1.008);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+}
+
+.post-content {
+    grid-area: post-content;
+    font-size: 1.1rem;
+    font-family: sans-serif;
+    color: $feed-post-text;
+    word-wrap: break-word;
+}
+
+.post-upvote {
+    grid-area: post-upvote;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: sans-serif;
+    .upvote-btn{
+        transition: all 350ms ease-in-out;
+        outline: none;
+        display: flex;
+        justify-content: space-around;
+        // border: none;
+        color: $feed-post-text;
+        // background-color: $clr-green;
+        background-color: transparent;
+        border: 1px solid $feed-post-text;
+
+        border-radius: 1.5em;
+        padding: 0.25em 0.5em;
+        margin: 0.25em 0.25em 0em 0em;
+        font-size: 1.05rem;
+        font-weight: 550;
+        width: 10rem;
+        &:hover {
+            color: $clr-green;
+            border-color: $clr-green;
+        }
+    }
+    .upvote-btn[data-clicked = 'true'] {
+        transition: all 350ms ease-in-out;
+        background-color: $clr-green;
+        color: white;
+        border-color: transparent;
+    }
+}
+
+.post-tags {
+    grid-area: tags;
+    display: flex;
+    justify-content: flex-end;
+
+    .tag-link {
+        text-decoration: none;
+        border-radius: 1.5em;
+        padding: 0.25em 0.5em;
+        margin: 0.25em 0.25em 0em 0em;
+        font-size: 1.05rem;
+        font-weight: 550;
+
+        // background-color: $clr-green;
+        background-color: $bg-color;
+        color: $clr-green;
+        transition: color ease-in-out 150ms;
+
+        font-family: sans-serif;
+        text-transform: capitalize;
+
+        &:hover {
+            // background-color: $clr-green-hover;
+            color: white;
+        }
+    }
+}
+
+.sign-up-box{
+    // left: 70vw;
+    // top: 13.5vh;
+    grid-area: right;
+    height: 45vh;
+    // width: 30vw;
+    margin: 0 5vw;
+
+    background-color: $feed-post-color;
+
+    display: grid;
+    grid-template: "hero" 3fr "intro-txt" 2fr "link" min-content / 1fr ;
+
+    font-family: 'Montserrat';
+    font-size: 1.1rem;
+    
+    .hero {
+        background-color: rgb(90, 88, 88);
+        background-image: url('../Resources/signupboxbg.jpg');
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .intro-text {
+        color: $feed-post-text;
+        margin-top: 1em;
+        text-align: center;
+        padding: 0 1em;
+    }
+
+    a {
+        margin: 0 auto 1em auto;
+        font-weight: bold;
+        background-color: $clr-green;
+        color: white;
+        border-radius: 4em;
+        padding: 0.25em 2em;
+        text-decoration: none;
+        transition: background-color ease-in-out 150ms;
+
+        &:hover {
+            color: white;
+            background-color: $clr-green-hover;
+            text-decoration: none;
+        }
+    }
+}
