@@ -1,11 +1,15 @@
+from django.contrib import messages
+
+from requests_html import HTMLSession
 import requests
 import os
 import random
 import string
 import tempfile
 
-def download_image(post, album_image_url):
+def download_image(request, post, album_image_url):
     if not album_image_url:
+        messages.add_message(request, messages.INFO, "Couldn't find an Album Art for that song.")
         return;
 
     r = requests.get(album_image_url)
@@ -27,7 +31,9 @@ def get_and_save_genre_desc(genre):
 
     r = session.get(search_query)
     descbox = r.html.find(".kno-rdesc")
-    span_items = descbox[0].find("span")
-
-    genre.desc = span_items[0].text
+    if descbox:
+        span_items = descbox[0].find("span")
+        genre.desc = span_items[0].text
+    else:
+        genre.desc = 'Could not find information about this genre.'
     genre.save()
