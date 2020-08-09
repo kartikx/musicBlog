@@ -50,3 +50,6 @@ class CreatePostForm(forms.Form):
     song = forms.CharField(label= 'Song Title', label_suffix= '', max_length=50)
     artist = forms.CharField(label= 'Artist Name', label_suffix= '', max_length=50)
     content = forms.CharField(label='Content', label_suffix= '', widget= forms.Textarea(attrs={'rows': 4}))
+
+class UploadPhotoForm(forms.Form):
+    image = forms.ImageField()

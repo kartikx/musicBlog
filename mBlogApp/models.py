@@ -26,3 +26,12 @@ class Post(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)
     profile_photo = models.ImageField(default='profile_photos/default.jpg', upload_to = 'profile_photos')
+
+    def save(self):
+        super().save()
+
+        img = Image.open(self.profile_photo.path)
+
+        if img.height > 260 or img.width > 240:
+            img = img.resize((240, 260))
+            img.save(self.profile_photo.path)
