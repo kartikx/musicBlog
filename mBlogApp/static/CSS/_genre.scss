@@ -1,0 +1,13 @@
+@import 'variables';
+.genre-info {
+    // border: 2px solid blue;
+    h1 {
+        font-family: 'Montserrat';
+        color: white;
+    }
+    p {
+        font-family: sans-serif;
+        color: $feed-post-text;
+        font-size: 1.2rem;
+    }
+}

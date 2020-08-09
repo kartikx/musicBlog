@@ -1,8 +1,8 @@
-@import 'feed', 'welcome', 'navbar', 'profile';
+@import 'profile', 'feed', 'welcome', 'navbar', 'genre';
 
 body {
-    background: $bg-color;
-    height: calc(100vh - 5rem);
+    background: black;
+    min-height: calc(100vh - 5rem);
     overflow-x: hidden;
 }
 
@@ -13,7 +13,6 @@ body {
     margin: 2em auto;
     padding: 15px;
     border-radius: 10px;
-    // background: white;
     background: $feed-post-color;
     color: $feed-post-text;
     font-size: 1.4rem;
@@ -43,14 +42,15 @@ body {
     width: 100%;
     padding: 2rem 0 2rem 0;
     background: $bg-color;
-    min-height: 100%;
+    // min-height: 100%;
     display: grid;
-    grid-template:  "alert alert alert" min-content
+    grid-template:  ". alert1 ." min-content
                     "left middle right" min-content / 3fr 4.5fr 3fr;
+    min-height: calc(100vh);
 }
 
 .alert {
-    grid-area: alert;
+    grid-area: alert1;
 }
 
 .feed {

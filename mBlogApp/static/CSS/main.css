@@ -1,4 +1,131 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap");
+.profile-photo {
+  position: relative;
+  background-color: black;
+}
+
+.left-panel[data-owner="true"] {
+  cursor: pointer;
+}
+
+.left-panel[data-owner="true"] .profile-photo::after {
+  content: 'Change Photo';
+  text-align: center;
+  white-space: none;
+  position: absolute;
+  display: block;
+  color: #1db954;
+  font-size: 1.2rem;
+  background-color: #040404;
+  width: 75%;
+  border-radius: 5em;
+  top: 45%;
+  left: 12%;
+  display: none;
+  font-family: sans-serif;
+}
+
+.left-panel[data-owner="true"] .profile-photo:hover::after {
+  display: block;
+}
+
+.left-panel[data-owner="true"] .profile-photo:hover img {
+  opacity: 0.4;
+}
+
+.follow-btn {
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #929b8c;
+  background-color: #1db954;
+  background-color: transparent;
+  border: 1px solid #929b8c;
+  font-family: sans-serif;
+  border-radius: 1.5em;
+  padding: 0.25em 0.5em;
+  margin: 1em 0.25em 0em 0em;
+  font-size: 1.00rem;
+  font-weight: 550;
+  width: 10rem;
+  outline: none;
+}
+
+.follow-btn:focus {
+  outline: none;
+}
+
+.follow-btn:hover {
+  color: #1db954;
+  border-color: #1db954;
+}
+
+.follow-btn[data-clicked='true'] {
+  outline: none;
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+  background-color: #1db954;
+  color: white;
+  border-color: transparent;
+}
+
+h1 {
+  color: white;
+  font-family: 'Montserrat';
+}
+
+.upload-photo-modal {
+  background: white;
+  padding: 2em 4em;
+  display: none;
+  position: fixed;
+  top: 20vh;
+  width: 20vw;
+  left: 40vw;
+  -webkit-box-shadow: 0 0 0 150vh rgba(29, 185, 84, 0.05);
+          box-shadow: 0 0 0 150vh rgba(29, 185, 84, 0.05);
+  border-radius: 1em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.upload-photo-modal .modal-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.upload-photo-modal .modal-container img {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  border: 0px solid #2ccfec;
+  border-radius: 50%;
+  padding: 0.5em;
+  -webkit-transition: border-width 50ms ease-in;
+  transition: border-width 50ms ease-in;
+  cursor: pointer;
+}
+
+.upload-photo-modal .modal-container img:hover {
+  border-width: 2px;
+}
+
 .create-post-modal {
   background: white;
   padding: 1em 2em;
@@ -37,6 +164,7 @@
 
 .is-visible {
   display: block;
+  z-index: 2;
 }
 
 .modal-close {
@@ -295,37 +423,82 @@
   text-decoration: none;
 }
 
-.welcome-layout {
-  margin: auto;
-  margin-top: 20%;
-  width: 65%;
-  padding: 15px;
-  border-width: 5px solid black;
-  border-radius: 10px;
-  background: white;
-  /* opacity: 0.8;     */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.welcome-layout h2 {
-  text-align: center;
-  font-weight: bold;
-  color: black;
-  opacity: 1;
-}
-
-.welcome-layout .link-container {
-  opacity: 1;
-  margin-top: 20px;
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: url("../Resources/welcome-bg1.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.welcome-layout a {
-  font-weight: 600;
+.content {
+  margin-top: 15%;
+  width: 45vw;
+  font-family: 'Montserrat';
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content h2 {
+  text-align: center;
+  color: white;
+  font-size: 3.6rem;
+}
+
+.content .link-container {
+  margin-top: 4em;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.content .link-container a {
+  margin: 0 auto 1em auto;
+  font-weight: bold;
+  background-color: #1db954;
+  color: white;
+  border-radius: 4em;
+  padding: 0.25em 2em;
+  text-decoration: none;
+  -webkit-transition: background-color ease-in-out 150ms;
+  transition: background-color ease-in-out 150ms;
+}
+
+.content .link-container a:hover {
+  color: white;
+  background-color: #068d35;
+  text-decoration: none;
 }
 
 .my-navbar {
@@ -485,93 +658,20 @@
   display: block;
 }
 
-.profile-photo {
-  position: relative;
-  background-color: black;
-  border-radius: 50%;
-}
-
-.profile-photo img {
-  border-radius: 50%;
-}
-
-.left-panel[data-owner="true"] {
-  cursor: pointer;
-}
-
-.left-panel[data-owner="true"] .profile-photo::after {
-  content: 'Change Photo';
-  text-align: center;
-  white-space: none;
-  position: absolute;
-  display: block;
-  color: #1db954;
-  font-size: 1.2rem;
-  background-color: #040404;
-  width: 75%;
-  border-radius: 5em;
-  top: 45%;
-  left: 12%;
-  display: none;
-  font-family: sans-serif;
-}
-
-.left-panel[data-owner="true"] .profile-photo:hover::after {
-  display: block;
-}
-
-.left-panel[data-owner="true"] .profile-photo:hover img {
-  opacity: 0.4;
-}
-
-.follow-btn {
-  -webkit-transition: all 350ms ease-in-out;
-  transition: all 350ms ease-in-out;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  color: #929b8c;
-  background-color: #1db954;
-  background-color: transparent;
-  border: 1px solid #929b8c;
-  font-family: sans-serif;
-  border-radius: 1.5em;
-  padding: 0.25em 0.5em;
-  margin: 1em 0.25em 0em 0em;
-  font-size: 1.00rem;
-  font-weight: 550;
-  width: 10rem;
-  outline: none;
-}
-
-.follow-btn:focus {
-  outline: none;
-}
-
-.follow-btn:hover {
-  color: #1db954;
-  border-color: #1db954;
-}
-
-.follow-btn[data-clicked='true'] {
-  outline: none;
-  -webkit-transition: all 350ms ease-in-out;
-  transition: all 350ms ease-in-out;
-  background-color: #1db954;
-  color: white;
-  border-color: transparent;
-}
-
-h1 {
-  color: white;
+.genre-info h1 {
   font-family: 'Montserrat';
+  color: white;
+}
+
+.genre-info p {
+  font-family: sans-serif;
+  color: #929b8c;
+  font-size: 1.2rem;
 }
 
 body {
-  background: #0e0f0f;
-  height: calc(100vh - 5rem);
+  background: black;
+  min-height: calc(100vh - 5rem);
   overflow-x: hidden;
 }
 
@@ -613,15 +713,15 @@ body {
   width: 100%;
   padding: 2rem 0 2rem 0;
   background: #0e0f0f;
-  min-height: 100%;
   display: -ms-grid;
   display: grid;
-  grid-template: "alert alert alert" -webkit-min-content "left middle right" -webkit-min-content / 3fr 4.5fr 3fr;
-  grid-template: "alert alert alert" min-content "left middle right" min-content / 3fr 4.5fr 3fr;
+  grid-template: ". alert1 ." -webkit-min-content "left middle right" -webkit-min-content / 3fr 4.5fr 3fr;
+  grid-template: ". alert1 ." min-content "left middle right" min-content / 3fr 4.5fr 3fr;
+  min-height: calc(100vh);
 }
 
 .alert {
-  grid-area: alert;
+  grid-area: alert1;
 }
 
 .feed {
