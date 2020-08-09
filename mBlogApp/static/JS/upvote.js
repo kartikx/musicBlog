@@ -82,6 +82,5 @@ async function upvotePost(post) {
 }
 
 window.setTimeout(function() {
-    $(".alert").alert('close')
-}, 2000);
-
+    $(".alert").alert('close');
+}, 5000);
