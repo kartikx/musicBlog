@@ -43,8 +43,7 @@
             </div>
             {% if user.is_authenticated %}
             <div class="profile__photo">
-                <!-- insert dp here. -->
-                <img src="{% static 'Resources/timhenson.jpg' %}" />
+                <img src="{{ user.userprofile.profile_photo.url }}" />
                 <div class="profile-dropdown">
                     <ul>
                         <li><a href="{% url 'profile' username=request.user.username %}">My Profile</a></li>
