@@ -143,8 +143,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-DEFAULT_FILE_STORAGE = 'musicBlog.custom_azure.AzureMediaStorage'
-STATICFILES_STORAGE = 'musicBlog.custom_azure.AzureStaticStorage'
+MAX_POSTS = 5
 
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
