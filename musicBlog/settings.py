@@ -145,6 +145,9 @@ MESSAGE_TAGS = {
 
 MAX_POSTS = 5
 
+DEFAULT_FILE_STORAGE = 'musicBlog.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'musicBlog.custom_azure.AzureStaticStorage'
+
 STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
 
