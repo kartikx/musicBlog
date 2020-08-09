@@ -117,14 +117,34 @@ def createAndSavePost(request, form):
     post.save()
 
 def profile(request, username):
+    if not request.user.is_anonymous:
+        liked_posts = request.user.liked_posts.all()
+        liked_posts_ids = [post.id for post in liked_posts]
+    else:
+        liked_posts_ids = []
+
     try:
         user = User.objects.get(username=username)
     except User.DoesNotExist:
         return HttpResponse(status=400)
-    
-    posts = Post.objects.filter(author=user)
 
-    return render(request, 'profile.html', {'profile_user': user, 'posts': posts})
+    if request.method == 'POST':
+        print('POST request')
+        form = CreatePostForm(request.POST)
+        imageForm = UploadPhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            createAndSavePost(request, form)
+            return redirect('feed')
+        
+        if imageForm.is_valid():
+            request.user.userprofile.profile_photo = imageForm.cleaned_data['image']
+            request.user.userprofile.save()
+            return redirect('profile', username)
+        
+    posts = Post.objects.filter(author=user).order_by('-date_posted')[:10]
+    form = CreatePostForm()
+    upload_form = UploadPhotoForm()
+    return render(request, 'profile.html', {'form': form, 'profile_user': user, 'posts': posts ,'liked_posts': liked_posts_ids, 'upload_form': upload_form})
 
 def logout(request):
     auth_logout(request)

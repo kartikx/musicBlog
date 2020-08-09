@@ -2,9 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+from PIL import Image
+
 class Genre(models.Model):
     name = models.CharField(max_length=50, blank= True, null= True)
-
+    desc = models.TextField(default="")
     def __str__(self):
         return self.name
 
