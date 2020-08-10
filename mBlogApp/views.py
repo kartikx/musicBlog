@@ -144,12 +144,16 @@ def profile(request, username):
         if form.is_valid():
             createAndSavePost(request, form)
             return redirect('feed')
-        
+
         if imageForm.is_valid():
-            request.user.userprofile.profile_photo = imageForm.cleaned_data['image']
-            request.user.userprofile.save()
+            if request.user.userprofile.changed_profile_photo:
+                messages.add_message(request, messages.ERROR, "Due to server constraints, we can't allow multiple changes. Sorry :(")
+            else :
+                request.user.userprofile.profile_photo = imageForm.cleaned_data['image']
+                request.user.userprofile.changed_profile_photo = True
+                request.user.userprofile.save()
             return redirect('profile', username)
-        
+
     posts = Post.objects.filter(author=user).order_by('-date_posted')[:10]
     form = CreatePostForm()
     upload_form = UploadPhotoForm()
