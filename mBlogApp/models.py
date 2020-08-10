@@ -28,12 +28,34 @@ class Post(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)
     profile_photo = models.ImageField(default='profile_photos/default.jpg', upload_to = 'profile_photos')
+    changed_profile_photo = models.BooleanField(default=False)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         super().save()
 
-        img = Image.open(self.profile_photo.path)
+        profile_photo_name = self.profile_photo.name.split('/')[1]
 
+        """
+        If this Object is being Created for the first time,
+        then don't resize, it's using the Default Image.
+        """
+        if not self.changed_profile_photo:
+            return;
+
+        img_read = storage.open(self.profile_photo.name, 'r')
+        img = Image.open(img_read)
+
+        """
+        I feel like this approach can be optimized, if
+        I resize before Uploading
+        """
         if img.height > 260 or img.width > 240:
             img = img.resize((240, 260))
-            img.save(self.profile_photo.path)
+            in_mem_file = io.BytesIO()
+            img.save(in_mem_file, format='JPEG')
+            img_write = storage.open(self.profile_photo.name, 'w+')
+            img_write.write(in_mem_file.getvalue())
+            img_write.close()
+        
+
+        img_read.close()
