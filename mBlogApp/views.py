@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.conf import settings
 
 from .forms import RegistrationForm, LoginForm, CreatePostForm, UploadPhotoForm
@@ -14,6 +14,18 @@ def welcome(request):
     if request.user.is_authenticated:
         return redirect('feed')
     return render(request, 'welcome.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def explore(request):
+    raise Http404()
+
+def community(request):
+    raise Http404
+
+def handler500(request):
+    return render(request, '500.html', status=500)
 
 def register(request):
     if request.user.is_authenticated:
