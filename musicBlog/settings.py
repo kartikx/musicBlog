@@ -157,4 +157,7 @@ STATIC_URL = '/static/'
 
 # Turning this on, messes up Azure. CSS files don't load.
 # However turning this off, messes up Heroku-postgres.
-django_heroku.settings(locals())
+
+# This changes your static settings when deployed, I should find a way to set up my Postgres database,
+# without needing this.
+# django_heroku.settings(locals())
