@@ -12,7 +12,7 @@
         </button>
     </div>
 
-    <h1>
+    <h1 style="grid-area: middle">
         {% if user != profile_user %}
             Posts by {{profile_user.username}}
         {% else %}
@@ -26,14 +26,13 @@
         <div class="modal-close">
             X
         </div>
-        <form method="POST" action="" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% render_field upload_form.image class="upload-button" %}
-            <input type="submit" value="Upload" />
-        </form>
         <div class="modal-container">
-            <img src = "{% static 'Resources/uploadImage.png' %}" class="upload-photo-icon" />
-            <h3>Upload Image</h3>
+            <img src = "{% static 'Resources/upload-icon.png' %}" class="upload-photo-icon" />
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% render_field upload_form.image class="upload-button" %}
+                <input type="submit" value="Upload" class="follow-btn" />
+            </form>
         </div>
     </div>
     <script src="{% static 'JS/profile.js' %}"></script>

@@ -59,5 +59,4 @@ class UserProfile(models.Model):
             img_write.write(in_mem_file.getvalue())
             img_write.close()
         
-
         img_read.close()
