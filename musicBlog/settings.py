@@ -27,13 +27,7 @@ SECRET_KEY = os.environ.get('MUSICBLOG_SK')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['musicbl0g.herokuapp.com']
-
-# Static files (CSS, JavaScript, Images)
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
+ALLOWED_HOSTS = ['musicbl0g.herokuapp.com', '127.0.0.1']
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -88,9 +82,6 @@ TEMPLATES = [
     },
 ]
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
 
 WSGI_APPLICATION = 'musicBlog.wsgi.application'
 
@@ -157,4 +148,12 @@ AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
 STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
 MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 
-django_heroku.settings(locals())
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "mBlogApp", "static"),
+# ]
+
+# Turning this on, messes up Azure. CSS files don't load.
+# django_heroku.settings(locals())
