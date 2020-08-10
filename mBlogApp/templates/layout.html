@@ -34,9 +34,9 @@
             </div>
             {% endif %}
             <div class="nav__links">
-                <a class="explore" href="#">Explore</a>
-                <a class="communities" href="#">Communities</a>
-                <a href="#" class="about">About</a>
+                <a class="explore" href="{% url 'explore' %}">Explore</a>
+                <a class="communities" href="{% url 'community' %}">Communities</a>
+                <a href="{% url 'about' %}" class="about">About</a>
                 {% if not user.is_authenticated %}
                     <a href="{% url 'login' %}" class="login">Login</a>
                 {% endif %}
