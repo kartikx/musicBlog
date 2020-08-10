@@ -1,0 +1,17 @@
+@import 'variables';
+
+.about-div {
+    grid-area: middle;
+    padding: 1em 2em;
+    background-color: $feed-post-color;
+    color: $feed-post-text;
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .about-footer {
+        font-size: 1rem;
+        text-align: center;
+    }
+}
