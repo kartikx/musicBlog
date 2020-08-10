@@ -56,7 +56,7 @@ def login(request):
 
             if user is not None:
                 auth_login(request, user)
-                messages.add_message(request, messages.SUCCESS, "Welcome back!")
+                messages.add_message(request, messages.SUCCESS, "Welcome to MusicBlog!")
                 return redirect('feed')
             else:
                 messages.add_message(request, messages.ERROR, "Invalid Credentials")
