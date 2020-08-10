@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="about-div">
+    <h1>Hello There!</h1>
+    <p>
+        MusicBlog is intended to be a Social Media where people can get together
+        to share Songs that they like. Users are allowed to upload their Song
+        Suggestions as well as comment and rate the Suggestions of their peers.
+        <br />
+        The BackEnd of this Project is written completely in Django. Parts of
+        the application have been Serialized based on REST Principles using
+        Django-REST. This allows Users to Like and Comment on posts, without
+        forcing the Page to Reload.
+        <br />
+        The BackEnd is also linked to Spotify's Web API, which allows for
+        automation of Album Art and Song Genres for Posts uploaded by the user.
+        <br />
+        The FrontEnd has been written in HTML, CSS and Vanilla JavaScript. I
+        plan to refactor the code to use React in the Future.
+        <div class="about-footer">
+            <br />
+            View the Source <a href="https://github.com/kartikx/musicBlog">Code</a>
+            <br />
+            Contact the Developer: <span>kartikx2000@gmail.com</span>
+        </div>
+    </p>
+</div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="block-404">
+        <img src="{% static 'Resources/404bg.png' %}" /> 
+        <h1> Oops , the Page you're looking for does not exist.</h1>
+        <span>
+            It's possible that I haven't added the content for this page yet.
+            <br/>
+            However, If you think this is an error in implementation, contact
+            kartikx2000@gmail.com
+        </span>
+    </div>
+{% endblock content %}

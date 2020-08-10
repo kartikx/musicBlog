@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="block-404">
+        <img src="{% static 'Resources/404bg.png' %}" /> 
+        <h1> Internal Server Error</h1>
+        <span>
+            Seems like I messed something up :( 
+            <br/>
+            Please let me know what went wrong, so I can work on fixing this.
+            Contact kartikx2000@gmail.com
+        </span>
+    </div>
+{% endblock content %}
